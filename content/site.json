@@ -1,6 +1,6 @@
 {
   "name": "Ousmane Alou Coulibaly",
-  "url": "https://ousmaneportfolio.netlify.app",
+  "url": "https://ousmane-coulibaly.netlify.app",
   "email": "ozoboy100@gmail.com",
   "phone": "+22364031695",
   "phoneLabel": "+223 64 03 16 95",
@@ -9,6 +9,6 @@
   "formspreeId": "xvggoglp",
   "portrait": "",
   "portraitAlt": "Portrait d’Ousmane Alou Coulibaly",
-  "cmsRepository": "",
+  "cmsRepository": "ozoboy-tech/Portfoliofinal",
   "cmsBranch": "main"
 }

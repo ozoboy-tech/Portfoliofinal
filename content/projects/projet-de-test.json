@@ -1,0 +1,12 @@
+{
+  "summary": "Test du système d'administration",
+  "theme": "ink",
+  "published": true,
+  "imageAlt": "pppp",
+  "order": 99,
+  "context": "Projet temporaire pour tester le CMS.",
+  "status": "prototype",
+  "title": "Projet de test",
+  "objective": "Vérifier la publication depuis Decap CMS.",
+  "category": "Test"
+}

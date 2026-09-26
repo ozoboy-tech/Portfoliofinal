@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+# Le dépôt GitHub est détecté via REPOSITORY_URL. Ne jamais ajouter de secret ici.
+# Définir CMS_REPOSITORY (propriétaire/dépôt) dans Netlify seulement si nécessaire.
+# CMS_BRANCH peut surcharger content/site.json ; défaut : main.

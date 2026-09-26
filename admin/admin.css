@@ -1,0 +1,10 @@
+.admin-start{box-sizing:border-box;min-height:100vh;background:#141615;color:#f2f0e9;padding:clamp(2rem,7vw,7rem);font:18px/1.7 system-ui,sans-serif}
+.admin-start[hidden]{display:none}
+body{margin:0}
+.admin-start a{color:#d4f58a;text-underline-offset:.25em}
+.admin-start a:focus-visible{outline:3px solid #d4f58a;outline-offset:6px}
+.admin-back{display:inline-block;margin-bottom:4rem}
+.admin-start img{display:block;margin-bottom:2rem}
+.admin-start h1{font-size:clamp(3rem,8vw,6rem);font-weight:500;letter-spacing:-.06em;line-height:1.05;margin:.5rem 0 2rem}
+.admin-start p{max-width:680px}
+.admin-eyebrow{font-size:.75rem;letter-spacing:.14em;color:#b2b7ad}

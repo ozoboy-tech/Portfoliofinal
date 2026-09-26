@@ -1,0 +1,27 @@
+{
+  "title": "PharmaGuard",
+  "summary": "Réunir les produits, les stocks et les ventes d’une pharmacie dans un même outil.",
+  "category": "Application métier",
+  "status": "development",
+  "published": true,
+  "order": 1,
+  "theme": "sage",
+  "image": "/assets/images/pharmaguard.svg",
+  "imageAlt": "Illustration de PharmaGuard : une croix et des modules représentant les opérations d’une pharmacie",
+  "imageCaption": "Illustration de projet",
+  "context": "La gestion quotidienne d’une pharmacie relie plusieurs activités : suivre les produits disponibles, enregistrer les ventes, préparer les commandes et garder le contact avec les fournisseurs. PharmaGuard vise à les réunir dans une application cohérente.",
+  "objective": "Donner un point de repère commun aux opérations de la pharmacie, pour que les informations sur les produits et les mouvements de stock soient plus faciles à consulter.",
+  "features": [
+    "Organiser les produits et suivre les stocks.",
+    "Enregistrer les ventes et les transactions.",
+    "Gérer les commandes et les informations des fournisseurs.",
+    "Prévoir des comptes utilisateurs avec des rôles adaptés."
+  ],
+  "approach": "Le projet est structuré autour des tâches métier. Les parcours produits, ventes et fournisseurs doivent rester compréhensibles tout en partageant des informations cohérentes.",
+  "statusNote": "PharmaGuard est en développement. Les éléments présentés décrivent le périmètre du projet ; aucune disponibilité publique ni résultat chiffré n’est annoncé.",
+  "role": "",
+  "technologies": [],
+  "result": "",
+  "repository": "",
+  "demo": ""
+}

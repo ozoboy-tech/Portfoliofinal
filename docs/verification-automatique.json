@@ -1,0 +1,261 @@
+{
+  "date": "2026-09-26",
+  "html": [
+    {
+      "path": "404.html",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "path": "admin/index.html",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "path": "confidentialite/index.html",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "path": "index.html",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "path": "parcours/index.html",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "path": "projets/afribus/index.html",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "path": "projets/pharmaguard/index.html",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "path": "projets/planora/index.html",
+      "valid": true,
+      "errors": []
+    }
+  ],
+  "css": [
+    {
+      "path": "assets/styles.css",
+      "syntax": "OK"
+    },
+    {
+      "path": "admin/admin.css",
+      "syntax": "OK"
+    }
+  ],
+  "dom": [
+    "Animations : bascule manuelle ; formulaire non intercepté ; contenu disponible sans IntersectionObserver.",
+    "Préférence système de mouvement réduit respectée au démarrage.",
+    "Lien depuis un projet : préremplissage en texte, sans insertion HTML.",
+    "Administration : état de configuration manquante et mode prévisualisation, sans chargement du CMS."
+  ],
+  "limitations": [
+    "Simulation DOM sans moteur de rendu. Aucun résultat de responsive, focus natif dialog, Lighthouse, OAuth distant ou envoi réel revendiqué."
+  ],
+  "httpLocal": [
+    {
+      "path": "/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/projets/pharmaguard/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/projets/planora/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/projets/afribus/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/parcours/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/confidentialite/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/admin/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/admin/cms-config.json",
+      "status": 200,
+      "contentType": "application/json"
+    },
+    {
+      "path": "/assets/styles.css",
+      "status": 200,
+      "contentType": "text/css; charset=utf-8"
+    },
+    {
+      "path": "/assets/scripts.js",
+      "status": 200,
+      "contentType": "text/javascript; charset=utf-8"
+    },
+    {
+      "path": "/assets/images/og-cover.png",
+      "status": 200,
+      "contentType": "image/png"
+    },
+    {
+      "path": "/assets/fonts/manrope-latin.woff2",
+      "status": 200,
+      "contentType": "font/woff2"
+    },
+    {
+      "path": "/assets/documents/CV_Ousmane_Coulibaly.pdf",
+      "status": 200,
+      "contentType": "application/pdf"
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "contentType": "application/xml"
+    },
+    {
+      "path": "/page-inexistante/",
+      "status": 404,
+      "contentType": "text/html; charset=utf-8"
+    }
+  ],
+  "contrast": [
+    {
+      "usage": "Texte principal",
+      "foreground": "#f2f0e9",
+      "background": "#141615",
+      "ratio": 15.94
+    },
+    {
+      "usage": "Texte secondaire",
+      "foreground": "#b2b7ad",
+      "background": "#141615",
+      "ratio": 8.89
+    },
+    {
+      "usage": "Liens accent",
+      "foreground": "#d4f58a",
+      "background": "#141615",
+      "ratio": 14.91
+    },
+    {
+      "usage": "Bouton accent",
+      "foreground": "#151a10",
+      "background": "#d4f58a",
+      "ratio": 14.51
+    },
+    {
+      "usage": "Placeholder",
+      "foreground": "#a0a797",
+      "background": "#141615",
+      "ratio": 7.33
+    },
+    {
+      "usage": "Bordure des champs",
+      "foreground": "#89907f",
+      "background": "#141615",
+      "ratio": 5.5
+    },
+    {
+      "usage": "Statut",
+      "foreground": "#d8e7c4",
+      "background": "#141615",
+      "ratio": 13.98
+    }
+  ],
+  "resources": [
+    {
+      "file": "dist/index.html",
+      "bytes": 15240,
+      "gzipBytesIndicative": 4707
+    },
+    {
+      "file": "assets/styles.css",
+      "bytes": 23479,
+      "gzipBytesIndicative": 5860
+    },
+    {
+      "file": "assets/scripts.js",
+      "bytes": 4208,
+      "gzipBytesIndicative": 1528
+    },
+    {
+      "file": "assets/images/signal.svg",
+      "bytes": 94724,
+      "gzipBytesIndicative": 29908
+    },
+    {
+      "file": "assets/images/pharmaguard.svg",
+      "bytes": 1222,
+      "gzipBytesIndicative": 625
+    },
+    {
+      "file": "assets/images/planora.svg",
+      "bytes": 1275,
+      "gzipBytesIndicative": 570
+    },
+    {
+      "file": "assets/images/afribus.svg",
+      "bytes": 1067,
+      "gzipBytesIndicative": 482
+    },
+    {
+      "file": "assets/fonts/manrope-latin.woff2",
+      "bytes": 24836,
+      "gzipBytesIndicative": 24864
+    },
+    {
+      "file": "assets/fonts/space-grotesk-latin.woff2",
+      "bytes": 22288,
+      "gzipBytesIndicative": 22316
+    }
+  ],
+  "versions": {
+    "node": "v24.19.0",
+    "html-validate": "11.16.0",
+    "jsdom": "30.1.1",
+    "postcss": "8.5.28"
+  },
+  "nodeTests": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0
+  },
+  "syntax": {
+    "src/templates.mjs": "OK",
+    "src/cms.mjs": "OK",
+    "src/schema.mjs": "OK",
+    "tools/serve.mjs": "OK",
+    "tools/build.mjs": "OK",
+    "tools/check.mjs": "OK",
+    "tests/security.test.mjs": "OK",
+    "tests/build.test.mjs": "OK",
+    "assets/scripts.js": "OK",
+    "admin/boot.js": "OK"
+  },
+  "vendorIntegrity": "Toutes les empreintes du manifeste correspondent aux fichiers livrés."
+}

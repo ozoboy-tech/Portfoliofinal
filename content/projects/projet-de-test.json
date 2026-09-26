@@ -1,7 +1,7 @@
 {
   "summary": "Test du système d'administration",
   "theme": "ink",
-  "published": true,
+  "published": false,
   "imageAlt": "pppp",
   "order": 99,
   "context": "Projet temporaire pour tester le CMS.",

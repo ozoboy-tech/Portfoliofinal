@@ -63,6 +63,214 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* INTRODUCTION — lettrage séquencé et vignettes de projets */
+.site-intro {
+    display: none;
+}
+
+html.intro-ready {
+    overflow: hidden;
+}
+
+html.intro-ready .site-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #F4E7E5;
+    color: var(--ink);
+    animation: intro-curtain .42s ease 5.77s forwards;
+}
+
+.intro-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.intro-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: intro-name-out .42s cubic-bezier(.4, 0, 1, 1) 4.03s forwards;
+}
+
+.intro-word {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    font-family: var(--display);
+    font-size: clamp(2.6rem, 9vw, 8.5rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -.055em;
+}
+
+.intro-letter {
+    display: block;
+    overflow: hidden;
+    padding-block: .12em;
+    margin-block: -.12em;
+}
+
+.intro-index-0 { --intro-delay: 0ms; }
+.intro-index-1 { --intro-delay: 75ms; }
+.intro-index-2 { --intro-delay: 150ms; }
+.intro-index-3 { --intro-delay: 225ms; }
+.intro-index-4 { --intro-delay: 300ms; }
+.intro-index-5 { --intro-delay: 375ms; }
+.intro-index-6 { --intro-delay: 450ms; }
+
+html.intro-ready .intro-letter > span {
+    display: block;
+    animation: intro-letter-in .72s cubic-bezier(.22, 1, .36, 1) var(--intro-delay) both;
+}
+
+.intro-lastname {
+    margin-top: .28em;
+    font-family: var(--display);
+    font-size: clamp(1.65rem, 5.2vw, 5rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: .13em;
+    text-align: center;
+    padding-left: .13em;
+    animation: intro-lastname-in .78s cubic-bezier(.22, 1, .36, 1) 1.25s both;
+}
+
+.intro-welcome {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max-content;
+    max-width: 90vw;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: clamp(3.3rem, 8vw, 7rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -.065em;
+    opacity: 0;
+    animation: intro-welcome-in .3s cubic-bezier(.22, 1, .36, 1) 4.57s both,
+               intro-welcome-out .28s ease 5.4s forwards;
+}
+
+.intro-art {
+    position: relative;
+    display: block;
+    flex: none;
+    height: 1.13em;
+    width: 0;
+    overflow: hidden;
+    margin-inline: .03em;
+    border-radius: .08em;
+    background: var(--accent);
+    animation: intro-art-open .52s cubic-bezier(.22, 1, .36, 1) 2.18s both,
+               intro-art-close .42s cubic-bezier(.4, 0, 1, 1) 3.53s forwards;
+}
+
+.intro-art-inner {
+    position: absolute;
+    inset: 0 auto 0 50%;
+    display: block;
+    width: .94em;
+    transform: translateX(-50%);
+}
+
+.intro-art img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: var(--accent);
+}
+
+.intro-art img:nth-child(2) {
+    opacity: 0;
+    animation: intro-frame .16s ease 2.78s forwards;
+}
+
+.intro-art img:nth-child(3) {
+    opacity: 0;
+    animation: intro-frame .16s ease 3.22s forwards;
+}
+
+.intro-signature, .intro-skip {
+    position: absolute;
+    bottom: clamp(1.25rem, 4vw, 3.5rem);
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+}
+
+.intro-signature {
+    left: var(--gutter);
+}
+
+.intro-signature span {
+    padding-inline: .3em;
+    color: var(--accent-secondary);
+}
+
+.intro-skip {
+    right: var(--gutter);
+    border: 0;
+    padding: .6em;
+    background: none;
+    color: inherit;
+    letter-spacing: .08em;
+}
+
+.intro-skip:hover, .intro-skip:focus-visible {
+    text-decoration: underline;
+}
+
+@keyframes intro-letter-in {
+    from { transform: translateY(112%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes intro-lastname-in {
+    from { transform: translateY(-100vh); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes intro-name-out {
+    to { transform: translateY(-.45em); opacity: 0; }
+}
+
+@keyframes intro-welcome-in {
+    from { transform: translate(-50%, calc(-50% + .32em)); opacity: 0; }
+    to { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+@keyframes intro-welcome-out {
+    to { transform: translate(-50%, calc(-50% - .18em)); opacity: 0; }
+}
+
+@keyframes intro-art-open {
+    from { width: 0; transform: scale(.82); opacity: 0; }
+    to { width: .94em; transform: scale(1); opacity: 1; }
+}
+
+@keyframes intro-art-close {
+    to { width: 0; opacity: 0; }
+}
+
+@keyframes intro-frame {
+    to { opacity: 1; }
+}
+
+@keyframes intro-curtain {
+    to { opacity: 0; visibility: hidden; }
+}
+
 body.dialog-open {
     overflow: hidden;
 }

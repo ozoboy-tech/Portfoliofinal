@@ -27,8 +27,9 @@ test('L’administration cible un dépôt explicite et reste fermée en prévisu
   assert.equal(githubRepository('git@github.com:owner/project.git'),'owner/project');
   assert.equal(githubRepository('https://github.com/owner/project.git'),'owner/project');
   assert.equal(githubRepository('https://token@github.com/owner/project'),'');
-  assert.equal(cmsConfiguration(site,{}).enabled,false);
-  const env={CONTEXT:'production',REPOSITORY_URL:'https://github.com/owner/project'};
+  assert.equal(cmsConfiguration({...site,cmsRepository:''},{}).enabled,false);
+  assert.equal(cmsConfiguration(site,{}).config.backend.repo,'ozoboy-tech/Portfoliofinal');
+  const env={CONTEXT:'production',CMS_REPOSITORY:'owner/project'};
   const cms=cmsConfiguration(site,env);assert.equal(cms.config.backend.repo,'owner/project');
   assert.equal(cms.config.backend.branch,'main');
   assert.equal(cms.config.collections[0].create,true);assert.equal(cms.config.collections[0].delete,true);

@@ -30,6 +30,13 @@ function footer(site) {
   </footer>`;
 }
 
+function intro() {
+  const letters = 'OUSMANE'.split('').map((letter,index) =>
+    `${index===3 ? `<span class="intro-art" aria-hidden="true"><span class="intro-art-inner"><img src="/assets/images/monogram.svg" alt="" width="128" height="128"><img src="/assets/images/pharmaguard.svg" alt="" width="1200" height="800"><img src="/assets/images/planora.svg" alt="" width="1200" height="800"></span></span>` : ''}<span class="intro-letter intro-index-${index}"><span>${letter}</span></span>`
+  ).join('');
+  return `<div class="site-intro"><div class="intro-word" aria-hidden="true">${letters}</div><p class="intro-signature" aria-hidden="true">DATA <span>·</span> CODE <span>·</span> IMPACT</p><button class="intro-skip" type="button" aria-label="Passer l’introduction">Passer <span aria-hidden="true">↗</span></button></div>`;
+}
+
 export function page({site, title, description = site.description, path = '/', body, home = false, noindex = false, structured}) {
   const canonical = `${site.url}${path}`;
   const data = structured || ((home || path === '/parcours/') ? {
@@ -43,7 +50,7 @@ export function page({site, title, description = site.description, path = '/', b
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#141615">
+  <meta name="theme-color" content="#64242F">
   <title>${e(title)}</title>
   <meta name="description" content="${e(description)}">
   <meta name="author" content="${e(site.name)}">
@@ -65,11 +72,12 @@ ${noindex ? '<meta name="robots" content="noindex, nofollow">' : ''}
   <link rel="icon" href="/assets/images/monogram.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/icon-192.png">
   <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  ${home ? '<script src="/assets/intro-init.js"></script>' : ''}
   <link rel="stylesheet" href="/assets/styles.css">
   <script type="application/ld+json">${jsonForHTML(data)}</script>
   <script src="/assets/scripts.js" defer></script>
 </head>
-<body>${header(home)}<main id="contenu" tabindex="-1">${body}</main>${footer(site)}</body>
+<body>${home ? intro() : ''}${header(home)}<main id="contenu" tabindex="-1">${body}</main>${footer(site)}</body>
 </html>`;
 }
 

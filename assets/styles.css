@@ -82,7 +82,20 @@ html.intro-ready .site-intro {
     overflow: hidden;
     background: #F4E7E5;
     color: var(--ink);
-    animation: intro-curtain .45s ease 2.85s forwards;
+    animation: intro-curtain .42s ease 5.46s forwards;
+}
+
+.intro-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.intro-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: intro-name-out .42s cubic-bezier(.4, 0, 1, 1) 4.03s forwards;
 }
 
 .intro-word {
@@ -105,17 +118,45 @@ html.intro-ready .site-intro {
 }
 
 .intro-index-0 { --intro-delay: 0ms; }
-.intro-index-1 { --intro-delay: 55ms; }
-.intro-index-2 { --intro-delay: 110ms; }
-.intro-index-3 { --intro-delay: 165ms; }
-.intro-index-4 { --intro-delay: 220ms; }
-.intro-index-5 { --intro-delay: 275ms; }
-.intro-index-6 { --intro-delay: 330ms; }
+.intro-index-1 { --intro-delay: 75ms; }
+.intro-index-2 { --intro-delay: 150ms; }
+.intro-index-3 { --intro-delay: 225ms; }
+.intro-index-4 { --intro-delay: 300ms; }
+.intro-index-5 { --intro-delay: 375ms; }
+.intro-index-6 { --intro-delay: 450ms; }
 
 html.intro-ready .intro-letter > span {
     display: block;
-    animation: intro-letter-in .62s cubic-bezier(.22, 1, .36, 1) var(--intro-delay) both,
-               intro-letter-out .38s cubic-bezier(.4, 0, 1, 1) 2.48s forwards;
+    animation: intro-letter-in .72s cubic-bezier(.22, 1, .36, 1) var(--intro-delay) both;
+}
+
+.intro-lastname {
+    margin-top: .28em;
+    font-family: var(--display);
+    font-size: clamp(1.65rem, 5.2vw, 5rem);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: .13em;
+    text-align: center;
+    padding-left: .13em;
+    animation: intro-lastname-in .78s cubic-bezier(.22, 1, .36, 1) 1.25s both;
+}
+
+.intro-welcome {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max-content;
+    max-width: 90vw;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: clamp(3.3rem, 8vw, 7rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -.065em;
+    opacity: 0;
+    animation: intro-welcome-in .3s cubic-bezier(.22, 1, .36, 1) 4.57s both,
+               intro-welcome-out .29s ease 5.09s forwards;
 }
 
 .intro-art {
@@ -128,8 +169,8 @@ html.intro-ready .intro-letter > span {
     margin-inline: .03em;
     border-radius: .08em;
     background: var(--accent);
-    animation: intro-art-open .55s cubic-bezier(.22, 1, .36, 1) .9s both,
-               intro-art-close .38s cubic-bezier(.4, 0, 1, 1) 2.31s forwards;
+    animation: intro-art-open .52s cubic-bezier(.22, 1, .36, 1) 2.18s both,
+               intro-art-close .42s cubic-bezier(.4, 0, 1, 1) 3.53s forwards;
 }
 
 .intro-art-inner {
@@ -151,12 +192,12 @@ html.intro-ready .intro-letter > span {
 
 .intro-art img:nth-child(2) {
     opacity: 0;
-    animation: intro-frame .16s ease 1.54s forwards;
+    animation: intro-frame .16s ease 2.78s forwards;
 }
 
 .intro-art img:nth-child(3) {
     opacity: 0;
-    animation: intro-frame .16s ease 1.94s forwards;
+    animation: intro-frame .16s ease 3.22s forwards;
 }
 
 .intro-signature, .intro-skip {
@@ -195,8 +236,22 @@ html.intro-ready .intro-letter > span {
     to { transform: translateY(0); }
 }
 
-@keyframes intro-letter-out {
-    to { transform: translateY(-65%); opacity: 0; }
+@keyframes intro-lastname-in {
+    from { transform: translateY(-100vh); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes intro-name-out {
+    to { transform: translateY(-.45em); opacity: 0; }
+}
+
+@keyframes intro-welcome-in {
+    from { transform: translate(-50%, calc(-50% + .32em)); opacity: 0; }
+    to { transform: translate(-50%, -50%); opacity: 1; }
+}
+
+@keyframes intro-welcome-out {
+    to { transform: translate(-50%, calc(-50% - .18em)); opacity: 0; }
 }
 
 @keyframes intro-art-open {

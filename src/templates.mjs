@@ -34,7 +34,7 @@ function intro() {
   const letters = 'OUSMANE'.split('').map((letter,index) =>
     `${index===3 ? `<span class="intro-art" aria-hidden="true"><span class="intro-art-inner"><img src="/assets/images/monogram.svg" alt="" width="128" height="128"><img src="/assets/images/pharmaguard.svg" alt="" width="1200" height="800"><img src="/assets/images/planora.svg" alt="" width="1200" height="800"></span></span>` : ''}<span class="intro-letter intro-index-${index}"><span>${letter}</span></span>`
   ).join('');
-  return `<div class="site-intro"><div class="intro-word" aria-hidden="true">${letters}</div><p class="intro-signature" aria-hidden="true">DATA <span>·</span> CODE <span>·</span> IMPACT</p><button class="intro-skip" type="button" aria-label="Passer l’introduction">Passer <span aria-hidden="true">↗</span></button></div>`;
+  return `<div class="site-intro"><div class="intro-stage" aria-hidden="true"><div class="intro-name"><div class="intro-word">${letters}</div><div class="intro-lastname">COULIBALY</div></div><p class="intro-welcome">Bienvenue.</p></div><p class="intro-signature" aria-hidden="true">DATA <span>·</span> CODE <span>·</span> IMPACT</p><button class="intro-skip" type="button" aria-label="Passer l’introduction">Passer <span aria-hidden="true">↗</span></button></div>`;
 }
 
 export function page({site, title, description = site.description, path = '/', body, home = false, noindex = false, structured}) {

@@ -23,11 +23,45 @@ export function validateURL(value, optional = true) {
 }
 export function validateImage(value = '') {
   if (!value) return '';
-  assert(typeof value === 'string' && !value.includes('..') && !value.includes('\\'), 'Chemin image invalide');
-  const original = /^\/assets\/images\/(pharmaguard|planora|afribus|project-default)\.svg$/;
-  const uploaded = /^\/assets\/(uploads|images)\/[a-zA-Z0-9_./-]+\.(png|jpe?g|webp|avif)$/i;
-  assert(original.test(value) || uploaded.test(value), 'Image locale PNG, JPEG, WebP ou AVIF attendue');
-  return value;
+
+  assert(typeof value === 'string', 'Chemin image invalide');
+
+  let image = value.trim();
+
+  // Decap CMS peut retourner l'URL absolue du média.
+  // On ne conserve que son chemin local.
+  if (/^https:\/\//i.test(image)) {
+    const url = new URL(image);
+
+    assert(
+      !url.username &&
+      !url.password &&
+      !url.search &&
+      !url.hash,
+      'URL image invalide'
+    );
+
+    image = url.pathname;
+  }
+
+  assert(
+    !image.includes('..') &&
+    !image.includes('\\'),
+    'Chemin image invalide'
+  );
+
+  const original =
+    /^\/assets\/images\/(pharmaguard|planora|afribus|project-default)\.svg$/;
+
+  const uploaded =
+    /^\/assets\/(uploads|images)\/[a-zA-Z0-9_./-]+\.(png|jpe?g|webp|avif)$/i;
+
+  assert(
+    original.test(image) || uploaded.test(image),
+    'Image locale PNG, JPEG, WebP ou AVIF attendue'
+  );
+
+  return image;
 }
 function text(value, name, max, required = false) {
   if (value == null && !required) return '';

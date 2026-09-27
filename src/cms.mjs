@@ -42,7 +42,17 @@ export function cmsConfiguration(site, env={}) {
             {value:'ink',label:'Bordeaux'}
           ]
         }),
-        field('image','Image','image',{required:false,choose_url:false,media_library:{allow_multiple:false,config:{max_file_size:2097152}},hint:'PNG, JPG, WebP ou AVIF ; 2 Mo maximum. Nom sans espace ni accent. Une illustration par défaut est utilisée si ce champ est vide.',pattern:['^(/assets/images/(pharmaguard|planora|afribus|project-default)\\.svg|/assets/(images|uploads)/[a-zA-Z0-9_./-]+\\.(png|jpe?g|webp|avif))?$','Utilisez une image locale PNG, JPG, WebP ou AVIF.']}),
+        field('image','Image','image',{
+  required:false,
+  choose_url:false,
+  media_library:{
+    allow_multiple:false,
+    config:{
+      max_file_size:2097152
+    }
+  },
+  hint:'PNG, JPG, WebP ou AVIF ; 2 Mo maximum. Nom sans espace ni accent. Une illustration par défaut est utilisée si ce champ est vide.'
+}),
         text('imageAlt','Description de l’image (accessibilité)',300,true),
         {...text('imageCaption','Légende du visuel',100,false),hint:'Précisez « Illustration de projet » si ce n’est pas une capture du produit.'},
         text('context','Contexte / besoin initial',5000),

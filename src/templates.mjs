@@ -72,10 +72,10 @@ ${noindex ? '<meta name="robots" content="noindex, nofollow">' : ''}
   <link rel="icon" href="/assets/images/monogram.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/assets/images/icon-192.png">
   <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-  ${home ? '<script src="/assets/intro-init.js"></script>' : ''}
-  <link rel="stylesheet" href="/assets/styles.css">
+  ${home ? '<script src="/assets/intro-init.js?v=20260927-2"></script>' : ''}
+  <link rel="stylesheet" href="/assets/styles.css?v=20260927-2">
   <script type="application/ld+json">${jsonForHTML(data)}</script>
-  <script src="/assets/scripts.js" defer></script>
+  <script src="/assets/scripts.js?v=20260927-2" defer></script>
 </head>
 <body>${home ? intro() : ''}${header(home)}<main id="contenu" tabindex="-1">${body}</main>${footer(site)}</body>
 </html>`;

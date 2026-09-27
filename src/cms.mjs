@@ -33,7 +33,15 @@ export function cmsConfiguration(site, env={}) {
         field('status','Statut','select',{default:'development',options:Object.entries(statuses).map(([value,label])=>({value,label}))}),
         field('published','Visible sur le portfolio','boolean',{default:false, hint:'Un projet masqué est absent du site généré ; son fichier reste dans GitHub. Ne stockez pas de données confidentielles dans un dépôt public.'}),
         field('order','Ordre d’affichage','number',{default:10,value_type:'int',min:0,max:999}),
-        field('theme','Couleur du visuel','select',{default:'ink',options:[{value:'sage',label:'Sauge'},{value:'lilac',label:'Lilas'},{value:'clay',label:'Argile'},{value:'ink',label:'Encre'}]}),
+        field('theme','Couleur du visuel','select',{
+          default:'ink',
+          options:[
+            {value:'sage',label:'Gris rosé'},
+            {value:'lilac',label:'Rose corail'},
+            {value:'clay',label:'Rouge brique'},
+            {value:'ink',label:'Bordeaux'}
+          ]
+        }),
         field('image','Image','image',{required:false,choose_url:false,media_library:{allow_multiple:false,config:{max_file_size:2097152}},hint:'PNG, JPG, WebP ou AVIF ; 2 Mo maximum. Nom sans espace ni accent. Une illustration par défaut est utilisée si ce champ est vide.',pattern:['^(/assets/images/(pharmaguard|planora|afribus|project-default)\\.svg|/assets/(images|uploads)/[a-zA-Z0-9_./-]+\\.(png|jpe?g|webp|avif))?$','Utilisez une image locale PNG, JPG, WebP ou AVIF.']}),
         text('imageAlt','Description de l’image (accessibilité)',300,true),
         {...text('imageCaption','Légende du visuel',100,false),hint:'Précisez « Illustration de projet » si ce n’est pas une capture du produit.'},

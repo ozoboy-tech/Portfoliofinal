@@ -1,7 +1,7 @@
 {
   "demo": "",
   "statusNote": "PharmaGuard est en développement. Les éléments présentés décrivent le périmètre du projet ; aucune disponibilité publique ni résultat chiffré n’est annoncé.",
-  "summary": "Réunir les produits, les stocks et les ventes d’une pharmacie dans un même outille",
+  "summary": "Réunir les produits, les stocks et les ventes d’une pharmacie dans un même outil.",
   "approach": "Le projet est structuré autour des tâches métier. Les parcours produits, ventes et fournisseurs doivent rester compréhensibles tout en partageant des informations cohérentes.",
   "theme": "sage",
   "technologies": [],

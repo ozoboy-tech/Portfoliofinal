@@ -42,7 +42,7 @@
     window.__finishIntro = finishIntro;
     if (root.classList.contains('intro-ready') && !media.matches) {
       background.forEach(element => { element.inert = true; });
-      timer = window.setTimeout(finishIntro, 5950);
+      timer = window.setTimeout(finishIntro, 6250);
       skip.addEventListener('click', () => finishIntro(true));
       media.addEventListener('change', () => { if (media.matches) finishIntro(); });
       document.addEventListener('visibilitychange', () => { if (document.hidden) finishIntro(); });

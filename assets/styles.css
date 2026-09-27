@@ -82,7 +82,7 @@ html.intro-ready .site-intro {
     overflow: hidden;
     background: #F4E7E5;
     color: var(--ink);
-    animation: intro-curtain .42s ease 5.46s forwards;
+    animation: intro-curtain .42s ease 5.77s forwards;
 }
 
 .intro-stage {
@@ -156,7 +156,7 @@ html.intro-ready .intro-letter > span {
     letter-spacing: -.065em;
     opacity: 0;
     animation: intro-welcome-in .3s cubic-bezier(.22, 1, .36, 1) 4.57s both,
-               intro-welcome-out .29s ease 5.09s forwards;
+               intro-welcome-out .28s ease 5.4s forwards;
 }
 
 .intro-art {

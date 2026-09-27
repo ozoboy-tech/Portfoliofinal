@@ -5,5 +5,5 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   window.__introFailsafe = window.setTimeout(() => {
     if (typeof window.__finishIntro === 'function') window.__finishIntro();
     else document.documentElement.classList.remove('intro-ready');
-  }, 7500);
+  }, 7800);
 }

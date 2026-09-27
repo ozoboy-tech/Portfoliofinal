@@ -1,0 +1,137 @@
+/* Présentation : lecture progressive et monogramme OC interactif. */
+.about-scroll {
+    --about-dim: rgba(223, 217, 216, .28);
+    --about-lit: var(--text);
+    --about-flash: var(--accent);
+}
+
+.about-scroll-stage {
+    min-height: var(--about-viewport, 100svh);
+    padding-block: clamp(2.5rem, 6vh, 5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-scroll .section-heading {
+    margin-bottom: clamp(1.5rem, 4vh, 3rem);
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.about-scroll-body {
+    display: flow-root;
+}
+
+.about-scroll-text {
+    font-family: var(--display);
+    font-size: clamp(1.7rem, 3vw, 3.4rem);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -.035em;
+    color: var(--text);
+}
+
+.about-3d-space {
+    display: block;
+    float: right;
+    width: 28%;
+    min-width: 240px;
+    max-width: 340px;
+    margin: .15em 0 .5em clamp(1.5rem, 3vw, 3rem);
+}
+
+.about-3d-space oc-monogram {
+    display: block;
+    width: 100%;
+    height: 310px;
+}
+
+.about-3d-space oc-monogram > img {
+    width: 86%;
+    margin: 3rem auto;
+}
+
+.about-word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.about-char {
+    color: var(--about-lit);
+    transition: color .2s linear;
+}
+
+.about-scroll-track.is-animated .about-char {
+    color: var(--about-dim);
+}
+
+.about-scroll-track.is-animated .about-char.is-lit {
+    animation: about-letter-wave .4s ease both;
+}
+
+.about-scroll-track.is-pinned {
+    height: calc(var(--about-viewport, 100svh) * 2.35);
+}
+
+.about-scroll-track.is-pinned .about-scroll-stage {
+    position: sticky;
+    top: 0;
+}
+
+@keyframes about-letter-wave {
+    0% {
+        color: var(--about-dim);
+        animation-timing-function: cubic-bezier(.22, 1, .36, 1);
+    }
+    30% {
+        color: var(--about-flash);
+        animation-timing-function: cubic-bezier(.55, 0, 1, .45);
+    }
+    100% { color: var(--about-lit); }
+}
+
+@media (max-width: 760px) {
+    .about-3d-space {
+        float: none;
+        width: min(100%, 300px);
+        min-width: 0;
+        margin: 0 auto 1.2rem;
+    }
+
+    .about-3d-space oc-monogram {
+        height: 280px;
+    }
+
+    .about-scroll-text {
+        font-size: clamp(1.55rem, 5.2vw, 2.2rem);
+    }
+}
+
+html[data-motion="reduced"] .about-char {
+    color: var(--about-lit) !important;
+    animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-char {
+        color: var(--about-lit) !important;
+        animation: none !important;
+    }
+}
+
+@media print {
+    .about-scroll-track.is-pinned { height: auto; }
+    .about-scroll-track .about-scroll-stage {
+        position: static;
+        min-height: 0;
+        padding-block: 1.5rem;
+    }
+    .about-3d-space { display: none; }
+    .about-scroll-text { font-size: 14pt; }
+    .about-char {
+        color: #111 !important;
+        animation: none !important;
+    }
+}

@@ -74,8 +74,10 @@ ${noindex ? '<meta name="robots" content="noindex, nofollow">' : ''}
   <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   ${home ? '<script src="/assets/intro-init.js?v=20260927-3"></script>' : ''}
   <link rel="stylesheet" href="/assets/styles.css?v=20260927-4">
+  ${home ? '<link rel="stylesheet" href="/assets/about-scroll.css?v=2">' : ''}
   <script type="application/ld+json">${jsonForHTML(data)}</script>
   <script src="/assets/scripts.js?v=20260927-4" defer></script>
+  ${home ? '<script src="/assets/about-scroll.js?v=2" defer></script><script type="module" src="/assets/oc3d/oc-monogram.js?v=1"></script>' : ''}
 </head>
 <body>${home ? intro() : ''}${header(home)}<main id="contenu" tabindex="-1">${body}</main>${footer(site)}</body>
 </html>`;
@@ -117,7 +119,33 @@ export function homepage(site, projects, noindex) {
   </section>
   <div class="discipline-band" aria-hidden="true"><span>DATA</span><i>✳</i><span>CODE</span><i>✳</i><span>IMPACT</span><i>✳</i><span>DATA</span><i>✳</i></div>
   <section class="projects-section wrap section-space" id="projets" aria-labelledby="projects-title"><div class="section-heading"><p class="eyebrow">01 / PROJETS CHOISIS</p><p class="section-side-note">Des idées ancrées<br>dans des besoins concrets.</p></div><div class="section-title-row"><h2 id="projects-title">Du besoin<br>au <span class="serif-word">produit.</span></h2><p>${projects.length ? `${String(projects.length).padStart(2,'0')} projets à découvrir` : 'De nouveaux projets à venir'}</p></div><div class="project-grid">${projects.map(projectCard).join('')}</div></section>
-  <section class="about-section wrap section-space" id="profil" aria-labelledby="about-title"><div class="section-heading"><p class="eyebrow">02 / UNE APPROCHE TRANSVERSALE</p><a class="text-link" href="/parcours/">Parcours &amp; CV ${arrow}</a></div><div class="about-grid"><div class="about-mark" aria-hidden="true"><img src="/assets/images/monogram.svg" width="220" height="220" alt=""><span>CURIEUX PAR NATURE.<br>CONCRET PAR CHOIX.</span></div><div><h2 id="about-title">Faire le lien entre<br>la donnée et <span class="serif-word">le terrain.</span></h2><p class="about-lead">Je suis Ousmane Alou Coulibaly. J’associe le développement logiciel à la Data Science et au MLOps pour donner une forme utile aux idées.</p><p>Mon parcours en génie logiciel m’a appris à relier les besoins des utilisateurs aux choix techniques. Du premier échange à l’application, j’accorde de l’importance à la clarté, à la fiabilité et à ce que le produit apporte réellement.</p><p>Pour une équipe qui recrute comme pour un client qui porte un projet, mon point de départ reste le même : comprendre le problème avant de construire la solution.</p><div class="about-links"><a class="text-link" href="/assets/documents/CV_Ousmane_Coulibaly.pdf" download>Télécharger mon CV ${arrow}</a><a class="text-link" href="#contact">Faire connaissance ${arrow}</a></div></div></div></section>
+
+<section class="about-section about-scroll wrap" id="profil" aria-labelledby="about-title">
+    <div class="about-scroll-track">
+      <div class="about-scroll-stage">
+        <div class="section-heading">
+          <p class="eyebrow">02 / UNE APPROCHE TRANSVERSALE</p>
+          <a class="text-link" href="/parcours/">Parcours &amp; CV ${arrow}</a>
+        </div>
+        <h2 id="about-title" class="sr-only">Faire le lien entre la donnée et le terrain.</h2>
+        <div class="about-scroll-body">
+          <aside class="about-3d-space" aria-label="Monogramme OC">
+            <oc-monogram finish="champagne" motion="float" role="group" aria-label="Monogramme OC interactif en trois dimensions">
+              <img src="/assets/oc3d/oc-poster.png" alt="Monogramme OC" width="880" height="492" loading="lazy">
+            </oc-monogram>
+          </aside>
+          <p class="about-scroll-text">
+          <span data-about-reveal>Je suis Ousmane Alou Coulibaly. J’associe le développement logiciel à la Data Science et au MLOps pour donner une forme utile aux idées. Mon parcours en génie logiciel m’a appris à relier les besoins des utilisateurs aux choix techniques. Du premier échange à l’application, j’accorde de l’importance à la clarté, à la fiabilité et à ce que le produit apporte réellement. Pour une équipe qui recrute comme pour un client qui porte un projet, mon point de départ reste le même : comprendre le problème avant de construire la solution.</span>
+          </p>
+        </div>
+        <div class="about-links">
+          <a class="text-link" href="/assets/documents/CV_Ousmane_Coulibaly.pdf" download>Télécharger mon CV ${arrow}</a>
+          <a class="text-link" href="#contact">Faire connaissance ${arrow}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="expertise-section wrap section-space" id="expertises" aria-labelledby="expertise-title"><div class="section-heading"><p class="eyebrow">03 / DOMAINES D’INTERVENTION</p><p class="section-side-note">Un regard sur la technique.<br>Un autre sur l’usage.</p></div><h2 id="expertise-title">La donnée rencontre<br>le <span class="serif-word">développement.</span></h2><div class="expertise-list">
     <article class="expertise"><span class="expertise-number">01</span><h3>Data Science</h3><div><p>Explorer les données, faire émerger des questions utiles et évaluer les modèles avec méthode.</p><ul class="tags"><li>Python</li><li>Analyse</li><li>Machine learning</li></ul></div><span class="expertise-symbol" aria-hidden="true">✳</span></article>
     <article class="expertise"><span class="expertise-number">02</span><h3>Ingénierie MLOps</h3><div><p>Relier l’expérimentation à des services reproductibles, avec une attention portée aux tests et au déploiement.</p><ul class="tags"><li>Git</li><li>API</li><li>Tests &amp; pipelines</li></ul></div><span class="expertise-symbol" aria-hidden="true">↗</span></article>

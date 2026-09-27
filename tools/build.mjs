@@ -33,8 +33,13 @@ async function copyTree(source,destination,assets=false) {
     if(assets) {
       assert(/^[A-Za-z0-9_.-]+$/.test(entry.name),`Nom de média sans espace/accent attendu : ${entry.name}`);
       const ext=extname(entry.name).toLowerCase();
-      assert(['.svg','.png','.jpg','.jpeg','.webp','.avif','.woff2','.css','.js','.pdf'].includes(ext),`Type de ressource refusé : ${entry.name}`);
+      assert(['.svg','.png','.jpg','.jpeg','.webp','.avif','.woff2','.css','.js','.pdf','.glb'].includes(ext),`Type de ressource refusé : ${entry.name}`);
       const buffer=await readFile(from);
+      if (ext==='.glb') {
+  assert(normalized.endsWith('/assets/oc3d/oc-monogram.glb'),'Modèle 3D non prévu');
+  assert(buffer.length>=20 && buffer.length<=2097152,'Modèle 3D invalide ou trop lourd');
+  assert(buffer.toString('ascii',0,4)==='glTF' && buffer.readUInt32LE(4)===2 && buffer.readUInt32LE(8)===buffer.length,'Fichier GLB 2.0 invalide');
+}
       if (ext==='.svg') {
         assert(originalSVG.has(entry.name) && dirname(from).split(sep).join('/').endsWith('/assets/images'),'Les SVG importés ne sont pas publiés');
         assert(!/<(?:script|foreignObject|iframe)|\bon\w+\s*=|(?:href|src)\s*=\s*["'](?:https?:|data:|javascript:)/i.test(buffer.toString()),'SVG actif refusé');
@@ -52,7 +57,7 @@ async function copyTree(source,destination,assets=false) {
 export function securityHeaders(pages,noindex=false) {
   const hashes = new Set();
   for(const html of pages.values()) for(const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) hashes.add(`'sha256-${createHash('sha256').update(match[1]).digest('base64')}'`);
-  const publicCSP=`default-src 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; script-src 'self' ${[...hashes].join(' ')}; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; form-action https://formspree.io; upgrade-insecure-requests`;
+  const publicCSP=`default-src 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; script-src 'self' ${[...hashes].join(' ')}; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action https://formspree.io; upgrade-insecure-requests`;
   // Decap/Ajv utilise la compilation de schémas et des styles à l’exécution.
   // Ces exceptions sont confinées à /admin/, jamais appliquées au site public.
   const adminCSP="default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://avatars.githubusercontent.com https://raw.githubusercontent.com https://media.githubusercontent.com; font-src 'self' data:; connect-src 'self' https://api.github.com https://github.com https://api.netlify.com https://raw.githubusercontent.com https://media.githubusercontent.com; frame-src 'self' blob: https://api.netlify.com; worker-src 'self' blob:; form-action 'self' https://github.com https://api.netlify.com; upgrade-insecure-requests";

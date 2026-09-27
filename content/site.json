@@ -7,8 +7,8 @@
   "title": "Data Scientist · MLOps · Développeur Full-Stack",
   "description": "Ousmane Alou Coulibaly, Data Scientist et développeur Full-Stack orienté MLOps. Découvrez mes projets web, mon parcours et échangeons sur votre prochaine mission.",
   "formspreeId": "xvggoglp",
-  "portrait": "",
-  "portraitAlt": "Portrait d’Ousmane Alou Coulibaly",
+  "portrait": "/assets/images/ousmane-portrait.webp",
+  "portraitAlt": "Ousmane Alou Coulibaly de dos, tournant légèrement le visage vers la gauche, vêtu d’une veste sombre",
   "cmsRepository": "ozoboy-tech/Portfoliofinal",
   "cmsBranch": "main"
 }

@@ -73,9 +73,9 @@ ${noindex ? '<meta name="robots" content="noindex, nofollow">' : ''}
   <link rel="apple-touch-icon" href="/assets/images/icon-192.png">
   <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   ${home ? '<script src="/assets/intro-init.js?v=20260927-3"></script>' : ''}
-  <link rel="stylesheet" href="/assets/styles.css?v=20260927-3">
+  <link rel="stylesheet" href="/assets/styles.css?v=20260927-4">
   <script type="application/ld+json">${jsonForHTML(data)}</script>
-  <script src="/assets/scripts.js?v=20260927-3" defer></script>
+  <script src="/assets/scripts.js?v=20260927-4" defer></script>
 </head>
 <body>${home ? intro() : ''}${header(home)}<main id="contenu" tabindex="-1">${body}</main>${footer(site)}</body>
 </html>`;
@@ -112,7 +112,7 @@ export function homepage(site, projects, noindex) {
   const body = `<section class="hero wrap" aria-labelledby="hero-title">
     <div class="hero-topline"><p class="eyebrow">DATA SCIENCE / MLOPS / FULL-STACK</p><p class="eyebrow hero-location">BAMAKO, MALI <span class="live-dot" aria-hidden="true"></span></p></div>
     <div class="hero-grid"><div class="hero-copy"><h1 id="hero-title">Ousmane<br>Coulibaly<span class="accent">.</span></h1><p class="hero-role">Data Scientist &amp; développeur Full-Stack<br><span>avec une approche MLOps.</span></p><p class="hero-description">Comprendre la donnée.<br>Construire des produits utiles.</p><div class="hero-actions"><a class="button button-accent" href="#projets">Explorer mes projets ${arrow}</a><a class="text-link" href="/parcours/">Mon parcours <span aria-hidden="true">↗</span></a></div></div>
-      <figure class="hero-art">${portrait}<span class="art-corner" aria-hidden="true">OC / 01</span><figcaption><span>ANALYSER</span><span>CONSTRUIRE</span><span>DÉPLOYER</span></figcaption></figure>
+      <figure class="hero-art${site.portrait ? ' has-portrait' : ''}">${portrait}<span class="art-corner" aria-hidden="true">OC / 01</span><figcaption><span>ANALYSER</span><span>CONSTRUIRE</span><span>DÉPLOYER</span></figcaption></figure>
     </div><div class="hero-bottom"><p>À la croisée de la donnée,<br>du logiciel et des usages.</p><a href="#projets" class="scroll-link">Découvrir <span aria-hidden="true">↓</span></a><p class="hero-number" aria-hidden="true">PORTFOLIO / 2026</p></div>
   </section>
   <div class="discipline-band" aria-hidden="true"><span>DATA</span><i>✳</i><span>CODE</span><i>✳</i><span>IMPACT</span><i>✳</i><span>DATA</span><i>✳</i></div>

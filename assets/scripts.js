@@ -21,12 +21,19 @@
   window.addEventListener('pageshow', updateMotion);
   updateMotion();
 
+  const heroPortrait = document.querySelector('.hero-art.has-portrait');
+
+  function revealHeroPortrait() {
+    heroPortrait?.classList.add('is-visible');
+  }
+
   const intro = document.querySelector('.site-intro');
   if (intro) {
     const skip = intro.querySelector('.intro-skip');
     const background = [...document.body.children].filter(element => element !== intro);
     let timer;
     let finished = false;
+
     function finishIntro(focusContent = false) {
       if (finished) return;
       finished = true;
@@ -36,17 +43,33 @@
       background.forEach(element => { element.inert = false; });
       const shouldFocus = focusContent || document.activeElement === skip;
       intro.remove();
-      if (shouldFocus) document.getElementById('contenu')?.focus({preventScroll:true});
+
+      revealHeroPortrait();
+
+      if (shouldFocus) {
+        document.getElementById('contenu')?.focus({ preventScroll: true });
+      }
+
       delete window.__finishIntro;
     }
+
     window.__finishIntro = finishIntro;
+
     if (root.classList.contains('intro-ready') && !media.matches) {
       background.forEach(element => { element.inert = true; });
       timer = window.setTimeout(finishIntro, 6250);
       skip.addEventListener('click', () => finishIntro(true));
-      media.addEventListener('change', () => { if (media.matches) finishIntro(); });
-      document.addEventListener('visibilitychange', () => { if (document.hidden) finishIntro(); });
-    } else finishIntro();
+      media.addEventListener('change', () => {
+        if (media.matches) finishIntro();
+      });
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) finishIntro();
+      });
+    } else {
+      finishIntro();
+    }
+  } else {
+    revealHeroPortrait();
   }
 
   // Le contenu est visible par défaut, même sans JavaScript ou observer.

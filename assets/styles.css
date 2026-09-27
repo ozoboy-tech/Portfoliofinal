@@ -711,6 +711,73 @@ main:focus {
     object-fit: cover;
 }
 
+/* Portrait transparent et révélation après le loader */
+.hero-art.has-portrait {
+    background: transparent;
+    isolation: isolate;
+}
+
+.hero-art.has-portrait::before {
+    content: "";
+    position: absolute;
+    inset: 8% 2% 0;
+    z-index: -1;
+    background: radial-gradient(
+        ellipse at 50% 48%,
+        rgba(252, 143, 143, .15),
+        transparent 69%
+    );
+}
+
+.hero-art.has-portrait::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 14%;
+    background: linear-gradient(transparent, var(--bg));
+    pointer-events: none;
+}
+
+.hero-art.has-portrait>img {
+    display: block;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.hero-art.has-portrait .art-corner,
+.hero-art.has-portrait figcaption {
+    display: none;
+}
+
+html.intro-ready .hero-art.has-portrait {
+    opacity: 0;
+}
+
+.hero-art.has-portrait.is-visible {
+    animation:
+        portrait-reveal .95s cubic-bezier(.16, 1, .3, 1) both,
+        portrait-fade .7s cubic-bezier(.33, 1, .68, 1) both;
+}
+
+@keyframes portrait-reveal {
+    from {
+        transform:
+            perspective(1400px)
+            rotateY(-10deg)
+            rotateX(6deg)
+            translateY(34px)
+            scale(1.06);
+    }
+    to {
+        transform: none;
+    }
+}
+
+@keyframes portrait-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 .signal-art {
     animation: signal-breathe 12s ease-in-out infinite alternate;
 }

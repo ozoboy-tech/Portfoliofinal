@@ -1,6 +1,6 @@
 # Activer et utiliser l’administration
 
-L’espace `/admin/` utilise **Decap CMS 3.16.3**, servi localement, avec GitHub comme stockage et fournisseur d’identité. Chaque publication modifie un fichier JSON du dépôt et déclenche le build Netlify. Aucun mot de passe d’administration, jeton personnel GitHub ou secret OAuth ne doit être placé dans le JavaScript.
+L’espace `/admin/` utilise **Decap CMS 3.18.0**, servi localement, avec GitHub comme stockage et fournisseur d’identité. Chaque publication modifie un fichier JSON du dépôt et déclenche le build Netlify. Aucun mot de passe d’administration, jeton personnel GitHub ou secret OAuth ne doit être placé dans le JavaScript.
 
 ## 1. Déployer le projet depuis GitHub
 
@@ -16,11 +16,11 @@ La branche par défaut est `main`. Si votre branche de production porte un autre
 
 1. Dans GitHub : **Settings → Developer settings → OAuth Apps → New OAuth App**.
 2. Donnez un nom explicite, par exemple « Administration du portfolio Ousmane ».
-3. Homepage URL : `https://ousmaneportfolio.netlify.app`.
+3. Homepage URL : `https://ousmane-coulibaly.netlify.app`.
 4. Authorization callback URL : **`https://api.netlify.com/auth/done`**.
 5. GitHub fournit un **Client ID** et permet de générer un **Client Secret**.
 6. Dans le projet Netlify : **Project configuration → Security → OAuth → Authentication Providers → Install provider → GitHub**. Renseignez ces deux valeurs dans les champs du fournisseur.
-7. Ouvrez `https://ousmaneportfolio.netlify.app/admin/` et connectez-vous avec le compte GitHub ayant les droits d’écriture sur le dépôt.
+7. Ouvrez `https://ousmane-coulibaly.netlify.app/admin/` et connectez-vous avec le compte GitHub ayant les droits d’écriture sur le dépôt.
 
 Gardez le secret dans les réglages OAuth Netlify. Ne l’envoyez pas dans une conversation, ne le commitez pas et ne l’ajoutez pas au fichier de configuration du CMS. Si vous changez de domaine, ajustez `content/site.json`, l’application OAuth et les réglages Netlify.
 
@@ -46,7 +46,9 @@ En local, sans dépôt configuré, `/admin/` affiche les instructions de configu
 
 Dans les contextes Netlify autres que `production`, la gestion des projets est désactivée et les pages portent `noindex`. Connectez-vous sur le domaine principal pour éditer. Ceci évite de modifier le contenu de production depuis une prévisualisation.
 
-La collection est en publication directe. Si votre branche interdit les écritures directes, utilisez la modification par pull request dans GitHub ou adaptez le workflow éditorial avant d’activer le CMS ; n’affaiblissez pas une protection existante sans raison.
+Les brouillons passent par une pull request. Vérifiez qu'une édition avec image réussit, puis imposez sur `main` les pull requests et le contrôle GitHub Actions `verify`. Le fichier `.github/rulesets/main.json` peut être importé dans les règles de branche GitHub. Pour une opération de médiathèque bloquée, ajoutez le fichier par PR.
+
+Après migration, révoquez l'ancienne autorisation de l'application OAuth du portfolio dans les paramètres personnels GitHub. Reconnectez-vous puis vérifiez le consentement `public_repo`. La session de l’éditeur est conservée en mémoire et une actualisation demande une nouvelle connexion.
 
 ## Premier essai après activation
 

@@ -54,10 +54,13 @@ async function copyTree(source,destination,assets=false) {
     await copyFile(from,to);
   }
 }
-export function securityHeaders(pages,noindex=false) {
+function publicContentSecurityPolicy(pages) {
   const hashes = new Set();
   for(const html of pages.values()) for(const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) hashes.add(`'sha256-${createHash('sha256').update(match[1]).digest('base64')}'`);
-  const publicCSP=`default-src 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; script-src 'self' ${[...hashes].join(' ')}; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action https://formspree.io; upgrade-insecure-requests`;
+  return `default-src 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; script-src 'self' ${[...hashes].join(' ')}; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action https://formspree.io; upgrade-insecure-requests`;
+}
+export function securityHeaders(pages,noindex=false) {
+  const publicCSP = publicContentSecurityPolicy(pages);
   // Decap/Ajv utilise la compilation de schémas et des styles à l’exécution.
   // Ces exceptions sont confinées à /admin/, jamais appliquées au site public.
   const adminCSP="default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://avatars.githubusercontent.com https://raw.githubusercontent.com https://media.githubusercontent.com; font-src 'self' data:; connect-src 'self' blob: https://api.github.com https://github.com https://api.netlify.com https://raw.githubusercontent.com https://media.githubusercontent.com; frame-src 'self' blob: https://api.netlify.com; worker-src 'self' blob:; form-action 'self' https://github.com https://api.netlify.com; upgrade-insecure-requests";
@@ -87,6 +90,11 @@ export async function build({root=ROOT,out=resolve(root,'dist'),env=process.env}
     ['404.html',notfound(site)]
   ]);
   for(let i=0;i<projects.length;i++) pages.set(`projets/${projects[i].slug}/index.html`,projectpage(site,projects[i],projects.length>1?projects[(i+1)%projects.length]:null,noindex));
+  const errorPolicy = publicContentSecurityPolicy(pages).replace("frame-ancestors 'none'; ", '');
+  const errorPage = pages.get('404.html').replace(/<meta charset="utf-8">/i, charset =>
+    charset + '\n  <meta http-equiv="Content-Security-Policy" content="' + escapeHTML(errorPolicy) + '">');
+  assert(errorPage !== pages.get('404.html'), 'Insertion CSP 404 impossible');
+  pages.set('404.html', errorPage);
   // Valider les médias avant de remplacer le dernier build local.
   for(const path of [site.portrait,...projects.map(p=>p.image)].filter(Boolean)) {
     const stat=await lstat(resolve(root,path.slice(1)));

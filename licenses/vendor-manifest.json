@@ -1,400 +1,412 @@
 [
   {
     "package": "decap-cms",
-    "version": "3.16.3",
+    "version": "3.18.0",
     "license": "MIT",
-    "source": "https://registry.npmjs.org/decap-cms",
-    "archive_sha256": "f1c0055411ebdbd5b7c77a835a68b92b5467622585838f8496223b27eee116d1",
+    "source": "https://registry.npmjs.org/decap-cms/-/decap-cms-3.18.0.tgz",
+    "archive_sha256": "0fdbf51041a6f1ecda549d83fbe970ee3998ae7b95ae2bb89c51cbea98b30c1c",
+    "upstream_bundle_sha256": "ff32452465bb6d18557b53d3345da4c79d13e0e4fabc74971e72e1152bda384e",
+    "patch": "In-memory auth store (tools/import-cms.mjs)",
     "files": [
+      {
+        "path": "admin/vendor/103.decap-cms.js",
+        "sha256": "f38f520b4e8547e704a44f798ec37fc8fc6ae2be39924155d7feb0b3e008cd1c"
+      },
+      {
+        "path": "admin/vendor/1077.decap-cms.js",
+        "sha256": "51d0f62e3b2b0af01bd2a183d9bf2e9e07b3e6c1b13be2871557d0f119486d9f"
+      },
+      {
+        "path": "admin/vendor/117.decap-cms.js",
+        "sha256": "14a80c1e69cf5350c76c8e6c1c142f2e181648ff3896c2dcf27525519b8a9a68"
+      },
+      {
+        "path": "admin/vendor/1193.decap-cms.js",
+        "sha256": "da63d637c0bf27a176d75632b0fa6f70374a686723a8379d5291f4ef6948ef14"
+      },
+      {
+        "path": "admin/vendor/1577.decap-cms.js",
+        "sha256": "af18e272fd10d2ffe9b656e6edda4581e57a9e7990c30f378e3920a67f82f37a"
+      },
+      {
+        "path": "admin/vendor/1957.decap-cms.js",
+        "sha256": "a7599decc0052f0c03e09bd4a01da3ec832c9c6daaab0b668584da592df2cfc5"
+      },
+      {
+        "path": "admin/vendor/2031.decap-cms.js",
+        "sha256": "77d694383f1253b11fef839b7e7f7425ccbf2f04a8d0bfed5a1fc6745ec090c7"
+      },
+      {
+        "path": "admin/vendor/2035.decap-cms.js",
+        "sha256": "517a9db17d7688066bace35021961d7d1d7a626bef0c9dd91a5062ad5dfbf78b"
+      },
+      {
+        "path": "admin/vendor/21.decap-cms.js",
+        "sha256": "1d3bc148b681cb5cba39341a571c3529b2e5387c4e3a0ac47d6daa51c94f5f11"
+      },
+      {
+        "path": "admin/vendor/2363.decap-cms.js",
+        "sha256": "8a263747803827253ceb00bfc464fcc528258e86d2394b0d686a36dbde289a65"
+      },
+      {
+        "path": "admin/vendor/2369.decap-cms.js",
+        "sha256": "5d1eff2ba5bb1ad5efa6c88748b7979fb5b0949b1cde24470f71353dd3534bf1"
+      },
+      {
+        "path": "admin/vendor/2371.decap-cms.js",
+        "sha256": "b1cebf53a468345a8b45cddd84c06a52d72c54fb0edd4a44aec95d2139ab5211"
+      },
+      {
+        "path": "admin/vendor/2533.decap-cms.js",
+        "sha256": "52d50028a46d9e8e737768a9c8bf3b3154d81f19af45402b72414a75a8d8ba25"
+      },
+      {
+        "path": "admin/vendor/2598.decap-cms.js",
+        "sha256": "65ab8f38aa5149d92c1e785d344186bceb78b7b2280c542e00284dfdba51a29e"
+      },
+      {
+        "path": "admin/vendor/2777.decap-cms.js",
+        "sha256": "f94a5bcb49d0e7d05e59272ee1d30d23af705e62053c8d3102a4917b4f5853c8"
+      },
+      {
+        "path": "admin/vendor/2789.decap-cms.js",
+        "sha256": "7f4785d47123878ed00aa72c92cdcf959170f29cf6aa907e88dc0c082001e1ea"
+      },
+      {
+        "path": "admin/vendor/2821.decap-cms.js",
+        "sha256": "773291db92d1073fe62c59fa4a16fe897d67a38c67528ec66f62be6284bf4c94"
+      },
+      {
+        "path": "admin/vendor/2953.decap-cms.js",
+        "sha256": "103dc2efb3245185d2fa5419f22b075cce22cefddb9ab23b3f6307eec3189c39"
+      },
+      {
+        "path": "admin/vendor/2973.decap-cms.js",
+        "sha256": "6ab6d6dc4623b0e9a1a0b760a53402ced1b2412aad697576d5d9a3c44ee6c3d7"
+      },
+      {
+        "path": "admin/vendor/3037.decap-cms.js",
+        "sha256": "69cac9964840014f621a5b6a558fbd0503032bb3453f78e582516b04916dd055"
+      },
+      {
+        "path": "admin/vendor/3109.decap-cms.js",
+        "sha256": "6e81acbfb3da37c579d46d019b8cae58583d6ee10c18572d8a0d4f3c84857f51"
+      },
+      {
+        "path": "admin/vendor/315.decap-cms.js",
+        "sha256": "a0be489cecfab690a8339db7a7a60c05276f4c3304443fc45e3398784db6926c"
+      },
+      {
+        "path": "admin/vendor/3219.decap-cms.js",
+        "sha256": "58ddd5964d1b7041a3f24de81e5dcb5fe27e6e6fd2b5501c78b4f2c7e8107cdd"
+      },
+      {
+        "path": "admin/vendor/3763.decap-cms.js",
+        "sha256": "6185c0b2e8403d4043cc066ebe7c27c608c7b00bc343baed151d3411d512b8e2"
+      },
+      {
+        "path": "admin/vendor/3933.decap-cms.js",
+        "sha256": "ad8a6d7fb77051f7f0ca24fd8d40024fd4a6c806f0c8a58103d7189fb2cb09fb"
+      },
+      {
+        "path": "admin/vendor/4061.decap-cms.js",
+        "sha256": "cb4daca8eec5fc7abac02b785d66847b2e3588920cd549d18af278231999e61e"
+      },
+      {
+        "path": "admin/vendor/4149.decap-cms.js",
+        "sha256": "0e83393c224fcd10e1d44b2e7397c8b10f0ae4cf44dd713056cb6c006bd942c3"
+      },
+      {
+        "path": "admin/vendor/4229.decap-cms.js",
+        "sha256": "790226579437ce7a05f29c1cf491a32389a9ffa28fabd983d0cc2dd04b5a40cc"
+      },
+      {
+        "path": "admin/vendor/4277.decap-cms.js",
+        "sha256": "b91a772eb549766c48e293691769e0f9f01de246c23f0b5b7f3b9a06ec72a355"
+      },
+      {
+        "path": "admin/vendor/4329.decap-cms.js",
+        "sha256": "408b99b878d2800f4f99e691f28d470294ff29effc99481b695d95f181471d0d"
+      },
+      {
+        "path": "admin/vendor/4355.decap-cms.js",
+        "sha256": "b6dd5b7cb30a0c6ca230db0b41a3944990a1ec4af4c48f262fe15b5e3bbd0948"
+      },
+      {
+        "path": "admin/vendor/4928.decap-cms.js",
+        "sha256": "3381a3fbc1c47f11d8f5c38fd206708cea463636d699121f12ec5981795f71bf"
+      },
+      {
+        "path": "admin/vendor/5025.decap-cms.js",
+        "sha256": "f1344057e2ecbef409d339b12fe55c09793d9de2c7beb1b053dfd5f4cff1f83e"
+      },
+      {
+        "path": "admin/vendor/5047.decap-cms.js",
+        "sha256": "0cdfa9753fa5d0cf8b3596775f96a1e154737aba8170bca74091d4dfa02ea6b7"
+      },
+      {
+        "path": "admin/vendor/5121.decap-cms.js",
+        "sha256": "b05ff15d1b0a5bb8632b6de6cf627be746d5282e491744718a63ea579658d561"
+      },
+      {
+        "path": "admin/vendor/533.decap-cms.js",
+        "sha256": "16dfe7648cdd9a744cd93c46ccf90bcd54512aeeae784daaeb2708619edfeae7"
+      },
+      {
+        "path": "admin/vendor/5409.decap-cms.js",
+        "sha256": "ff11a67f3ecc444b2a7bc042bf3a5a5c1c0d5f67c0432867f4b0ff740938f19c"
+      },
+      {
+        "path": "admin/vendor/5415.decap-cms.js",
+        "sha256": "3e1a147f742993fcb7de12fa4321f20aa3daf37c00fbc4907e3740b0b9e4f6cb"
+      },
+      {
+        "path": "admin/vendor/545.decap-cms.js",
+        "sha256": "6cbb957dd003bb017000f76cfe2c7edd46df399063234617d22455abe80a7113"
+      },
+      {
+        "path": "admin/vendor/5749.decap-cms.js",
+        "sha256": "d040fd1cf6ffedd38ef9cff2fdc78b0f33a66cdd95eaf8d282ad1d0dedb6324a"
+      },
+      {
+        "path": "admin/vendor/5839.decap-cms.js",
+        "sha256": "912534ce4e443f22276e24c642b56742a62338224674ec96bc7c4b62308ce21a"
+      },
+      {
+        "path": "admin/vendor/5859.decap-cms.js",
+        "sha256": "d55fb36e351f74f3d8868c6931ed0542f26f1a6adb33a01aab6fa357d186bbad"
+      },
+      {
+        "path": "admin/vendor/5861.decap-cms.js",
+        "sha256": "e8fdf25fe4feaf29b53c02086b9795b76138c0c37f7c2e0aa6c7bb3b4fae1b28"
+      },
+      {
+        "path": "admin/vendor/5909.decap-cms.js",
+        "sha256": "c77131c6236d1b5e949c3df51a2af13e6c1648f02fcb69aaebe46b87544283b5"
+      },
+      {
+        "path": "admin/vendor/6069.decap-cms.js",
+        "sha256": "2c9caaadc2724696fc99c3b9146e42e46abf6774c36785c11a78ec624f9023c0"
+      },
+      {
+        "path": "admin/vendor/621.decap-cms.js",
+        "sha256": "8c08f4d9eeb1c104f1523608b4cd5fcd77f20439d288005382651ad9f6e0f6f6"
+      },
+      {
+        "path": "admin/vendor/6261.decap-cms.js",
+        "sha256": "fffa708f45edbaf178a633afab805e26c43383c536430920128d1566c4a1f9c2"
+      },
+      {
+        "path": "admin/vendor/6329.decap-cms.js",
+        "sha256": "f5db5470d07bd9a49fbf63499630ad838791658b1bdd3b79161ab996e5fb0574"
+      },
+      {
+        "path": "admin/vendor/6399.decap-cms.js",
+        "sha256": "c84cb29aa108b20212852498508426df0ae1e00ecbd638c008e71d246962df4b"
+      },
+      {
+        "path": "admin/vendor/6411.decap-cms.js",
+        "sha256": "98d648a80974a3cc9dafe056772615f5595d5b7d244450c9c1ddcfa0317a9e5c"
+      },
+      {
+        "path": "admin/vendor/6549.decap-cms.js",
+        "sha256": "442faca3345d4fe3f60df1d429fbb8493e1494120565caadb2f58407c2639526"
+      },
+      {
+        "path": "admin/vendor/6683.decap-cms.js",
+        "sha256": "43ec07e785584577e411771f6dd9f42423002d36461ca89c2e3a38e533e092b6"
+      },
+      {
+        "path": "admin/vendor/6893.decap-cms.js",
+        "sha256": "5ea9162a09716e49045c79c4ee389ef5a0e18182f78a00c55dc045434dbc2baf"
+      },
+      {
+        "path": "admin/vendor/697.decap-cms.js",
+        "sha256": "3273e61caf7fa72bbabb7eff1158a545f8508ace00df2ef25791d5231b8afe9f"
+      },
+      {
+        "path": "admin/vendor/7.decap-cms.js",
+        "sha256": "efa153ed1afeb81e0286eea6bfc92f69e7cca3243143ebb8eb96a02023466faf"
+      },
+      {
+        "path": "admin/vendor/7045.decap-cms.js",
+        "sha256": "9a0248be2c8708bc2366537bf84eaabfc0ee5ce3ebe8e829eb66a2ed21345fa2"
+      },
+      {
+        "path": "admin/vendor/7113.decap-cms.js",
+        "sha256": "5aa1db6d8554cb57e53418023affbb1871df4dabf23fe1ff8c134d41ae171e64"
+      },
+      {
+        "path": "admin/vendor/7205.decap-cms.js",
+        "sha256": "59cd96e1107f1ffca102fc34447cfa89039200c89b61b73b7711fa50d6bf4482"
+      },
+      {
+        "path": "admin/vendor/7237.decap-cms.js",
+        "sha256": "96467febc0eb0ac377fcb05dc972bac87d611c7f7be047d5937234c2b84a6f60"
+      },
+      {
+        "path": "admin/vendor/7405.decap-cms.js",
+        "sha256": "41b04d6a8a95ac222d2c48c0fad8389887bd7b09805ea41f8505262478502dd3"
+      },
+      {
+        "path": "admin/vendor/7413.decap-cms.js",
+        "sha256": "136619bcddee6b48346fa9a481e8ab5a585352ad96f0f012419f8228bb055386"
+      },
+      {
+        "path": "admin/vendor/7477.decap-cms.js",
+        "sha256": "de9df3db0ad1abc6e97ad7105005fb3751e06468cd03559ba1a001f8fddd961a"
+      },
+      {
+        "path": "admin/vendor/7589.decap-cms.js",
+        "sha256": "3fa5f84e230a86ad072e69aaae02240733081efc4783ad118c411bce6a213083"
+      },
+      {
+        "path": "admin/vendor/7613.decap-cms.js",
+        "sha256": "0ca883c6fe6d3f630dd144255ea8c543504bd46cdffdb2ad8391f42158862f54"
+      },
+      {
+        "path": "admin/vendor/7621.decap-cms.js",
+        "sha256": "ae2d75ea946ce545d36eac61eedd7e4ac8fdcf7c1ab83a4db0b02bdc57d85a84"
+      },
+      {
+        "path": "admin/vendor/7809.decap-cms.js",
+        "sha256": "ac27cebc5fc91eb723f989bd7f2ca7bb6e8a2173e52d01f1cd0342a0fbe1583d"
+      },
+      {
+        "path": "admin/vendor/7891.decap-cms.js",
+        "sha256": "6bb1c18bfcf0ee9bd33691e4a932077769453d259202a9351f25dcb9a9b0f934"
+      },
+      {
+        "path": "admin/vendor/7957.decap-cms.js",
+        "sha256": "f794bdbe24b0dec0b3e6269166c18e4359694cb722d821c47084f86c162e4526"
+      },
+      {
+        "path": "admin/vendor/8205.decap-cms.js",
+        "sha256": "62ae3108e35bc13a66c071668ee540c399b36a7d1307e9bb8c5c89fe9ea95f71"
+      },
+      {
+        "path": "admin/vendor/8229.decap-cms.js",
+        "sha256": "533254822778dc963ecc7f56335bdd70ab1de1f04fca99fb879cc8c0dcb14821"
+      },
+      {
+        "path": "admin/vendor/8241.decap-cms.js",
+        "sha256": "6e7f4675737f098d5277b0aa8547b9eb29e25574de172133bae63c486af5a7dc"
+      },
+      {
+        "path": "admin/vendor/8273.decap-cms.js",
+        "sha256": "62ad724a0c6a8dfc588bb078a5bd16d1c559915c068fbeb018ce104a496baab7"
+      },
+      {
+        "path": "admin/vendor/8333.decap-cms.js",
+        "sha256": "e921f7c29fb2ad4562228abb89b03dab978ab9c0e9fb0021636f4347fa5df719"
+      },
+      {
+        "path": "admin/vendor/8497.decap-cms.js",
+        "sha256": "e8f1770b714e2ec48410ca10a3dc4a162a954ba99c83144ffb0c92c674051cc0"
+      },
+      {
+        "path": "admin/vendor/8573.decap-cms.js",
+        "sha256": "2828ea8c9d22440cd750cab304344c2eb9acdfb4309255994dd6a8072cf7568e"
+      },
+      {
+        "path": "admin/vendor/8677.decap-cms.js",
+        "sha256": "c7f719b09b4a6115ee9c0411705f733729ad80e435c0537c5ef3f9de9f33c026"
+      },
+      {
+        "path": "admin/vendor/8703.decap-cms.js",
+        "sha256": "61de45038ca10699dd9ff853c1471c412617364942080642cc1c746efb8ee51e"
+      },
+      {
+        "path": "admin/vendor/8973.decap-cms.js",
+        "sha256": "4a04edad39090b883c200dbd852a8cbdd8fa9faa47920bf3785d5e8089bc8028"
+      },
+      {
+        "path": "admin/vendor/9003.decap-cms.js",
+        "sha256": "c08bc22e1bcde6f8a7d514d4e3a7f568001512dcb5d6392c7d2dcacabad57bc3"
+      },
+      {
+        "path": "admin/vendor/9049.decap-cms.js",
+        "sha256": "07434fd511af29819aa5bf6a4bcd141c9dd6051d5859410d94567789dc8c9185"
+      },
+      {
+        "path": "admin/vendor/9109.decap-cms.js",
+        "sha256": "78bf602dba16e6b510f0e027fa26a5edb20d85b3004e23afde61cbd204e8ad34"
+      },
+      {
+        "path": "admin/vendor/9157.decap-cms.js",
+        "sha256": "7262a58f1269f4646284d006c9c2bc76d56f2a4775585ff4bf8e47e9d58f8e27"
+      },
+      {
+        "path": "admin/vendor/9189.decap-cms.js",
+        "sha256": "f46b689399538e8c9a3bc871088da193284c37b60b85042ef0ff35ee2a3f9d8f"
+      },
+      {
+        "path": "admin/vendor/9469.decap-cms.js",
+        "sha256": "9ad30e1125954e2b273db9900b2664b48b93aec6f33ef074c4147cfc78867b6b"
+      },
+      {
+        "path": "admin/vendor/9493.decap-cms.js",
+        "sha256": "a88f55b2fd77f15fc74fd518125b92076a8d3ebef49e23022ed141df4713fe12"
+      },
+      {
+        "path": "admin/vendor/9571.decap-cms.js",
+        "sha256": "f66a12e8a3b18285650bd72d5117575cc0f3fb46bdd81a07d56807d303426858"
+      },
+      {
+        "path": "admin/vendor/9633.decap-cms.js",
+        "sha256": "9c8e96d4ffff25346ff172ecd269ec938d7ff0ceb7f6107ff2a50e086e4c2974"
+      },
+      {
+        "path": "admin/vendor/9661.decap-cms.js",
+        "sha256": "369a982f9c5f91e7d8d622a31869ba9c2debba33737a083019732573798d70e4"
+      },
+      {
+        "path": "admin/vendor/9691.decap-cms.js",
+        "sha256": "9ad359a740c0512ecae92af0e99b6725e2fd69f6bd5858cc1a0bbf333f918cda"
+      },
+      {
+        "path": "admin/vendor/9711.decap-cms.js",
+        "sha256": "f7c67c6fb9baba100b645257ba86a5a74b8572dce8a4e2a5ed24b2d716d7c12e"
+      },
+      {
+        "path": "admin/vendor/9733.decap-cms.js",
+        "sha256": "32c110180d0d8d79030e92d15c6cecd22e3994fe558718ed325bbb6486b55e6d"
+      },
+      {
+        "path": "admin/vendor/977.decap-cms.js",
+        "sha256": "42bc4088a20369ac4859392ccc28db3324b0f872e5ebb207aa83738e2d47ba1d"
+      },
+      {
+        "path": "admin/vendor/9829.decap-cms.js",
+        "sha256": "bf881346e6f95db3f3b69026595558b8b6ff7c23a8536b5e4c871ebafb0f49b3"
+      },
+      {
+        "path": "admin/vendor/997.decap-cms.js",
+        "sha256": "4bbcb902fe9b9d240018a48f0038a729cf97ef12f7171d302cf57e0874a89df5"
+      },
       {
         "path": "admin/vendor/cms.css",
         "sha256": "5b2c933676f88c28aefa5db9ae482980bed8552dc07899670c9d5647512e5371"
       },
       {
-        "path": "admin/vendor/103.decap-cms.js",
-        "sha256": "5b798bbee65e37c08b55b3dbc01baf8a4924ad9ce3f0bca2c016cf62eca2444f"
-      },
-      {
-        "path": "admin/vendor/1077.decap-cms.js",
-        "sha256": "4d6e37557a6d3c2ad3ce17c9f413e7a674b31f0bba11c93237092f0420cc8f58"
-      },
-      {
-        "path": "admin/vendor/117.decap-cms.js",
-        "sha256": "5f43d7b75d95d73437bd168cdf23dd48d59030598d71eeb0d3e820eadf51f918"
-      },
-      {
-        "path": "admin/vendor/1193.decap-cms.js",
-        "sha256": "459205174868e5b7b04de035eead99d03969a15be85e71c36e198cf988cbd014"
-      },
-      {
-        "path": "admin/vendor/1577.decap-cms.js",
-        "sha256": "e354b8b8b0ec5fdc75df40018e41ce772a442d06cf6e4edf132a58a56ce109e2"
-      },
-      {
-        "path": "admin/vendor/1957.decap-cms.js",
-        "sha256": "12fa1ef14dc9fc3fe1036d712fcf7f010970c72143ab9e7058ff827e81025322"
-      },
-      {
-        "path": "admin/vendor/2031.decap-cms.js",
-        "sha256": "9a15192acea1b744f89506fe075608a166e448aa3238fdf6e10ebcb3b61a4e70"
-      },
-      {
-        "path": "admin/vendor/2035.decap-cms.js",
-        "sha256": "44a60b8cfbb9ca0eab18f9ee99d927927a0f666012949b98ed6243d1c8aa71f4"
-      },
-      {
-        "path": "admin/vendor/21.decap-cms.js",
-        "sha256": "4c39f4fac4013a40c059c8a9931e54c6bc24c5283f6cb789599265e5f051cb9b"
-      },
-      {
-        "path": "admin/vendor/2363.decap-cms.js",
-        "sha256": "dc74c4409c97b878c2c1fbcc233a66cf393b8bf5e7d23678a8d6e4e0db22612d"
-      },
-      {
-        "path": "admin/vendor/2369.decap-cms.js",
-        "sha256": "6ab38ba9d9a38f20b27cb9fb3947a8525329a477765396f54193fa15c2059362"
-      },
-      {
-        "path": "admin/vendor/2371.decap-cms.js",
-        "sha256": "ef7004b41b6352264a011969e06398aeea43b01532166fcebe82b24ec0eb1f61"
-      },
-      {
-        "path": "admin/vendor/2533.decap-cms.js",
-        "sha256": "a7140ee2100d309aacca1b39b24ac1dd6c36f3776440b89d05f379034b123b33"
-      },
-      {
-        "path": "admin/vendor/2598.decap-cms.js",
-        "sha256": "9b28068a928ca4b3cec45ccaa37b017f998bfeb3e8ce987e32e0bd60d5bcabe6"
-      },
-      {
-        "path": "admin/vendor/2777.decap-cms.js",
-        "sha256": "5bac69c8a6de6879d114dcc338e950a9d5c659cd9afe3a724112224c7d45785c"
-      },
-      {
-        "path": "admin/vendor/2789.decap-cms.js",
-        "sha256": "2da8757b7f54c5020b8c335c3d9396ec490c06988fbcca1c31927bef4dc28927"
-      },
-      {
-        "path": "admin/vendor/2821.decap-cms.js",
-        "sha256": "395558d5aa58883eb2c65fc68bb9571d8264d5d3c5b04372330f62919b5570f7"
-      },
-      {
-        "path": "admin/vendor/2953.decap-cms.js",
-        "sha256": "a333f7a9a1a14dda4878c17919e9fee0ddb6df5b80acf5d9af559d5a1ea987dd"
-      },
-      {
-        "path": "admin/vendor/2973.decap-cms.js",
-        "sha256": "1f0206b5d3a240f30de71546228cac463927d0f69920e9b407c19cb8e3f32690"
-      },
-      {
-        "path": "admin/vendor/3037.decap-cms.js",
-        "sha256": "81b8e30c192465177ebe751aa6be77b72f0295ae8d6fe9a047eb40bebef5527e"
-      },
-      {
-        "path": "admin/vendor/3109.decap-cms.js",
-        "sha256": "609868cd0511ff6ed620fcbe74e9638b62738e58ee44aa0289e16d12c1141506"
-      },
-      {
-        "path": "admin/vendor/315.decap-cms.js",
-        "sha256": "14d2d6beef0a9949cf43c4332a167f64ed127ae28732484d3fa7392163328f10"
-      },
-      {
-        "path": "admin/vendor/3219.decap-cms.js",
-        "sha256": "8e02e8b123b1d91e3875d49044897e9d02e946c120ce3021dd3f6005c7cc28ff"
-      },
-      {
-        "path": "admin/vendor/3763.decap-cms.js",
-        "sha256": "1edf1a3c4d082a31c72719b047e36415d294978d38ec80033afcd5cd595b6986"
-      },
-      {
-        "path": "admin/vendor/3933.decap-cms.js",
-        "sha256": "6b258ea637142b1016f0745fcb8738651610ed15187bb36b57ec5d938d98bcfa"
-      },
-      {
-        "path": "admin/vendor/4061.decap-cms.js",
-        "sha256": "a72c910f199b5a979c1f9aa521fb625a5bc0b4396bf294a825a93740934c086f"
-      },
-      {
-        "path": "admin/vendor/4149.decap-cms.js",
-        "sha256": "9c193941de23ecd186ef53bc89ae3d29da38c112c5aa21a5ad49b73dec276c92"
-      },
-      {
-        "path": "admin/vendor/4229.decap-cms.js",
-        "sha256": "f0b92cbcdb1dc4dad04167724e941265fa6634a097529d4d7ff30e05b3fcadb6"
-      },
-      {
-        "path": "admin/vendor/4277.decap-cms.js",
-        "sha256": "2ccd4874963016dc7d74e25987740c3e09991e619688a9414cb2099f8292ee3d"
-      },
-      {
-        "path": "admin/vendor/4329.decap-cms.js",
-        "sha256": "f11eff72b47185e0f1f0308c155b6dc0177bf30b5f11e66b11e0c29846781bcd"
-      },
-      {
-        "path": "admin/vendor/4355.decap-cms.js",
-        "sha256": "4e3b3b1761007c09409b7b0c6bdcda56dab19883d5f421ed483088e790642e4c"
-      },
-      {
-        "path": "admin/vendor/4928.decap-cms.js",
-        "sha256": "97f67f8dcbccdd9057af613a9ee1c169507bddfd7657d326b28e995d6b2dfdd0"
-      },
-      {
-        "path": "admin/vendor/5025.decap-cms.js",
-        "sha256": "ed381519584cdbf666598840780d61d31599b3e8ed4730b4c469695d603a7dd4"
-      },
-      {
-        "path": "admin/vendor/5047.decap-cms.js",
-        "sha256": "91ff14fe7f61438e61647adb9cdccedb5cfad2d8b1dc40363b676919ce21bf3e"
-      },
-      {
-        "path": "admin/vendor/5121.decap-cms.js",
-        "sha256": "6d1cf090cefb15443f18df7c01676d6211fcd223251a6fad8dfcdd1ef9d9f8b0"
-      },
-      {
-        "path": "admin/vendor/533.decap-cms.js",
-        "sha256": "e9fb4af2cbc5d94823994255aa7d58e1ee7a1a34ba749bbb70e1d885199a3c1c"
-      },
-      {
-        "path": "admin/vendor/5409.decap-cms.js",
-        "sha256": "936e5fad557dd5a9a745b88b9fd54fa8f82c98e1d43bfa86407068500d24e057"
-      },
-      {
-        "path": "admin/vendor/5415.decap-cms.js",
-        "sha256": "bbd4c6ecd481e2bfde8f59376ca59142cb34cb61fd0b88838ea2fb47800e43f3"
-      },
-      {
-        "path": "admin/vendor/545.decap-cms.js",
-        "sha256": "18b77d83a80cb7e1412ed3de953a974aa4489a57c463033f82c5819f097a6092"
-      },
-      {
-        "path": "admin/vendor/5749.decap-cms.js",
-        "sha256": "3d585e9214e4027c4f4e6881d133e4af5563146db5037104d166c5cc88d153ba"
-      },
-      {
-        "path": "admin/vendor/5839.decap-cms.js",
-        "sha256": "e281d46542d550e683d75dcc4529ba1075ca439b4005a28741bc558d33e8f411"
-      },
-      {
-        "path": "admin/vendor/5859.decap-cms.js",
-        "sha256": "ecb8d23699ba77731246f348eff57264869bcdc446261ddc7a90d9b74ab01212"
-      },
-      {
-        "path": "admin/vendor/5861.decap-cms.js",
-        "sha256": "c9c21ff01324fb9bc3ffacdbcc76dd57ef8080dc1bfc5960f34fec27f4b8ce7a"
-      },
-      {
-        "path": "admin/vendor/5909.decap-cms.js",
-        "sha256": "7232834cbbe4bb8b722ced7061f57e84d135642c5f4083e0eb7c59ed9b54c217"
-      },
-      {
-        "path": "admin/vendor/6069.decap-cms.js",
-        "sha256": "904d58163283dca422970733c2843eecf907a65701fe70d9f7904b384c6add03"
-      },
-      {
-        "path": "admin/vendor/621.decap-cms.js",
-        "sha256": "28e2ed6bfdf91dcaae72e52d5a0ee9eda78d3752b4b0146a6af931022b1436b6"
-      },
-      {
-        "path": "admin/vendor/6261.decap-cms.js",
-        "sha256": "0ad516408a86e256fa12e20af855d687ad2ced1ca39a74f47ffffd13e2da9265"
-      },
-      {
-        "path": "admin/vendor/6329.decap-cms.js",
-        "sha256": "bc4435a5584509058d794cbee148d115b1d6baa12014677e583260289a7265fa"
-      },
-      {
-        "path": "admin/vendor/6399.decap-cms.js",
-        "sha256": "fd26539f90f5e58703962aecde23eb51acf1ff7affa1017fa12310935e457990"
-      },
-      {
-        "path": "admin/vendor/6411.decap-cms.js",
-        "sha256": "2e8e0a722b1edb5775d811d19ae98d6ccce3e1053e1b2977f0020cef9d7001eb"
-      },
-      {
-        "path": "admin/vendor/6549.decap-cms.js",
-        "sha256": "8c1bec214c63627bf515908cd5dfb509ce80c54b8b18ac215f502b471531db5b"
-      },
-      {
-        "path": "admin/vendor/6683.decap-cms.js",
-        "sha256": "f4fdbb2cfedbe7d96de1e0a1e60708c87d21be1d5d187c3dd98a198873475fa7"
-      },
-      {
-        "path": "admin/vendor/6893.decap-cms.js",
-        "sha256": "4bfaa58041724a7ac86d8eac85972df965a918be08477dcfe24cc65e1704bec9"
-      },
-      {
-        "path": "admin/vendor/697.decap-cms.js",
-        "sha256": "fb37466e1f332198eb70e9831674bc07ff279d8d31bc6db028c2dce64f1b28bc"
-      },
-      {
-        "path": "admin/vendor/7.decap-cms.js",
-        "sha256": "85b765122b47da88539ac52bf5803c72e77107b83ab5289e5571374cc3d27d5f"
-      },
-      {
-        "path": "admin/vendor/7045.decap-cms.js",
-        "sha256": "ed6b4fa1c733efb5857bcfbadf1bb99ec736209877a871777cf4813389d1f15c"
-      },
-      {
-        "path": "admin/vendor/7113.decap-cms.js",
-        "sha256": "8d22f6c8724646226f983f7fd6a318a885e054971e51fdb39df276311c1c55cb"
-      },
-      {
-        "path": "admin/vendor/7205.decap-cms.js",
-        "sha256": "c876adbcf1ab9f96f96441065aab3c50d847b19911d21ba78bc512ff75747c6e"
-      },
-      {
-        "path": "admin/vendor/7237.decap-cms.js",
-        "sha256": "9cc36cadbf0f5b0b2a810c94d63f2003ace1e91df085be19225bd33a3f29fcf4"
-      },
-      {
-        "path": "admin/vendor/7405.decap-cms.js",
-        "sha256": "541ea14d4d1657e473af8de21c66d3d5e0f0abee7d14ec1289bd80fffbfdd0de"
-      },
-      {
-        "path": "admin/vendor/7413.decap-cms.js",
-        "sha256": "b95e3054f77f87917e0a8f6a1885521885da52c2b6d0cfc3ae1a8d8048308112"
-      },
-      {
-        "path": "admin/vendor/7477.decap-cms.js",
-        "sha256": "7fd0c44f6f922be41c9216ba2e35a75380987d8475c7385034e716022f2a22ca"
-      },
-      {
-        "path": "admin/vendor/7589.decap-cms.js",
-        "sha256": "487d4063ea33b3742133041096d10fe81ebced6d937f8c106d2fd213b64a20e1"
-      },
-      {
-        "path": "admin/vendor/7613.decap-cms.js",
-        "sha256": "6bbab7d2dd3876a2bbf905bde158e94220d64a43385af3c334811105c699c56e"
-      },
-      {
-        "path": "admin/vendor/7621.decap-cms.js",
-        "sha256": "d22a1d838e2946beadc3760eae2c84791fae01cc6087b1827f4a1b46e6778602"
-      },
-      {
-        "path": "admin/vendor/7809.decap-cms.js",
-        "sha256": "11efa240878147c0644b2131a436a07082cca926a6de9500be2889fa797ff56f"
-      },
-      {
-        "path": "admin/vendor/7891.decap-cms.js",
-        "sha256": "644745a2edad482c75b387a0ac2d4c415177ff3b325bce3d3ec30c92d9ad9c83"
-      },
-      {
-        "path": "admin/vendor/7957.decap-cms.js",
-        "sha256": "4b6fa13f06d833a5cbff1df08aa69a3a5d3b2d229a3447dd9be07e92981adbad"
-      },
-      {
-        "path": "admin/vendor/8205.decap-cms.js",
-        "sha256": "8ec31d610839d1a20b13107269758affa8f9d3d2691e5786332161e48dca2a4c"
-      },
-      {
-        "path": "admin/vendor/8229.decap-cms.js",
-        "sha256": "9b3307dd0633318e3ad5687cde3cfe0fab8d6b30afa1429e67fb3d0e4898d9e8"
-      },
-      {
-        "path": "admin/vendor/8241.decap-cms.js",
-        "sha256": "0746a6637ecc034672c70b0f824c2fd492b0861fdcb9878b1a9f7fdc91368eff"
-      },
-      {
-        "path": "admin/vendor/8273.decap-cms.js",
-        "sha256": "4ac39c4d64457470239cb0c3317d612c376cf02ffff53a465154a6a14d5006e2"
-      },
-      {
-        "path": "admin/vendor/8333.decap-cms.js",
-        "sha256": "53ad02e553bb62bb411ba095fb683c2afa938eac6d5df5f99c6b782a9a1ba5ce"
-      },
-      {
-        "path": "admin/vendor/8497.decap-cms.js",
-        "sha256": "23d5a1d60c4558c1247a3ae5983037ab5301feae0a775068c151c2f8671d3198"
-      },
-      {
-        "path": "admin/vendor/8573.decap-cms.js",
-        "sha256": "e6d3ddf4254101f8a3620d84882d96fc428a114dd7b101568803b0e9ec15f521"
-      },
-      {
-        "path": "admin/vendor/8677.decap-cms.js",
-        "sha256": "4494c2c8ce93b9cd65a068b6a58b3b2ef25ca3e225f7cd13030b5c84acdbe60b"
-      },
-      {
-        "path": "admin/vendor/8703.decap-cms.js",
-        "sha256": "407d3af9ecc207655542d1277bf30280e7c303af463dd1b6a4c5f4d7b439ecdd"
-      },
-      {
-        "path": "admin/vendor/8973.decap-cms.js",
-        "sha256": "7988f52c0c5ffe2d939b07260a80fcaefdfcdea8811d369a812a6110139a0d31"
-      },
-      {
-        "path": "admin/vendor/9003.decap-cms.js",
-        "sha256": "4496c8d41cc2c99dca3a4f33bb048fe9c6356f4df2213d1633d36bdaf98c5a3c"
-      },
-      {
-        "path": "admin/vendor/9049.decap-cms.js",
-        "sha256": "4ad7cedca7f9375e0acbf2e581130452c1e4a124040f673434797fc93128f403"
-      },
-      {
-        "path": "admin/vendor/9109.decap-cms.js",
-        "sha256": "002a2f8c1def4007252e960b55f6ad3a1872085b2b950a0ff68f01de2c117831"
-      },
-      {
-        "path": "admin/vendor/9157.decap-cms.js",
-        "sha256": "df7d688a2ef2cd17291dae2717e96af1c950b90a3c3e540a3fc272e47b4a5df0"
-      },
-      {
-        "path": "admin/vendor/9189.decap-cms.js",
-        "sha256": "027307e727a523e3ba4d6b937b525e5eaae6189ca59e7c525dce436271638993"
-      },
-      {
-        "path": "admin/vendor/9469.decap-cms.js",
-        "sha256": "97a91549f6f5cdf1496c7aae6ac0095b7c2d93cba1918d4d57dc303b7fe3fef1"
-      },
-      {
-        "path": "admin/vendor/9493.decap-cms.js",
-        "sha256": "1964c96926f12a046e8306d4b14a0436319ce7951b901b743211709b9e217134"
-      },
-      {
-        "path": "admin/vendor/9571.decap-cms.js",
-        "sha256": "e2167161d0544da037192deec1ee46cf2ced472482cf001b1001463fd8d8b25e"
-      },
-      {
-        "path": "admin/vendor/9633.decap-cms.js",
-        "sha256": "43eebb1d445e71c72ee16973115c277e22ad8f25b461f0ffd8542f43e63e3da4"
-      },
-      {
-        "path": "admin/vendor/9661.decap-cms.js",
-        "sha256": "293fbd39d60d8da0fa0b0b253e92679d906ab4e1288d36e1db75e2dedc8a1cc0"
-      },
-      {
-        "path": "admin/vendor/9691.decap-cms.js",
-        "sha256": "c6556e37ce37c2b03eec0b194866953cc3bd2adaa8345c18d30a5253c279d496"
-      },
-      {
-        "path": "admin/vendor/9711.decap-cms.js",
-        "sha256": "8d5c3d0691e86b6f57d1fab31162d63829f5f8463253eee2de6ea19c2dd91130"
-      },
-      {
-        "path": "admin/vendor/9733.decap-cms.js",
-        "sha256": "9fd4e13f61e7a31b8002fcab0081406cabacc6ae850a49622f0802fdaebe7377"
-      },
-      {
-        "path": "admin/vendor/977.decap-cms.js",
-        "sha256": "4aada4c9cc1255d43f61e33ee0d9499b96bca9b6d886a69dbe1c2fa739991e0b"
-      },
-      {
-        "path": "admin/vendor/9829.decap-cms.js",
-        "sha256": "dd70705fd27465249b307ac44f50eec6c9080dc5e286aacfb2d25d59702d76f8"
-      },
-      {
-        "path": "admin/vendor/997.decap-cms.js",
-        "sha256": "86cebaad990fb434d41d33a80b59848ad53a210179d0c3d8b447d8669aa6a56b"
+        "path": "admin/vendor/dd5d52671a5763720504.wasm",
+        "sha256": "b6085bb6702f144e9dc6016d58d230b34a84976bf0d080b7390b4b4b137d6ab7"
       },
       {
         "path": "admin/vendor/decap-cms.js",
-        "sha256": "7c1efd6b616b4786e279aeef194dd21649a72058d3bc8d1f78901b574610dfb8"
+        "sha256": "6c655d4afb81c5c2feb1dedbc5b8e8519af9c8d34f1ee2c76c3ac43d6c2610ed"
       },
       {
         "path": "admin/vendor/decap-cms.js.LICENSE.txt",
-        "sha256": "c6ce115db01da234282652ca162b96f71507dac9ab85e6994a4eb3aed3155779"
+        "sha256": "cb88796ffd40f8309d6a56be786f91c2330a54c6a07bcd5968cd960d32464246"
+      },
+      {
+        "path": "admin/vendor/f728dc876b39e5273411.wasm",
+        "sha256": "39c279269ec1163b987b6d69749458e3d5b03b9585f58b6ca5455b76b504a305"
       }
-    ]
+    ],
+    "verified_lodash_version": "4.18.1",
+    "verified_lodash_modules": 486
   },
   {
     "package": "@fontsource-variable/manrope",

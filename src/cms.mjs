@@ -15,7 +15,8 @@ export function cmsConfiguration(site, env={}) {
   if (!repository) return {enabled:false,reason:'repository'};
   return {enabled:true, config:{
     load_config_file:false, locale:'fr', local_backend:false,
-    backend:{name:'github',repo:repository,branch,base_url:'https://api.netlify.com',auth_endpoint:'auth',site_domain:new URL(site.url).hostname},
+    publish_mode:'editorial_workflow',
+    backend:{name:'github',repo:repository,branch,auth_scope:'public_repo',base_url:'https://api.netlify.com',auth_endpoint:'auth',site_domain:new URL(site.url).hostname},
     site_url:site.url, display_url:site.url,
     logo_url:`${site.url}/assets/images/monogram.svg`,
     media_folder:'assets/uploads', public_folder:'/assets/uploads',
@@ -25,7 +26,7 @@ export function cmsConfiguration(site, env={}) {
       name:'projects',label:'Projets',label_singular:'Projet',folder:'content/projects',
       create:true,delete:true,format:'json',extension:'json',slug:'{{slug}}',
       identifier_field:'title',summary:'{{title}} · {{status}}',sortable_fields:['order','title'],
-      description:'Publier enregistre le projet dans GitHub et déclenche sa mise en ligne. Désactivez « Visible » pour le conserver sans l’afficher.',
+      description:'Enregistrez un brouillon puis publiez sa pull request après validation. Désactivez « Visible » pour le conserver sans l’afficher.',
       fields:[
         text('title','Nom du projet',90),
         text('summary','Résumé',260),

@@ -18,6 +18,7 @@ jobs:
           set -eu
           npm pack decap-cms@3.18.0 --ignore-scripts --pack-destination "$RUNNER_TEMP"
           tar -xzf "$RUNNER_TEMP/decap-cms-3.18.0.tgz" -C "$RUNNER_TEMP"
+          node -e 'const f=require("fs");const p=process.env.RUNNER_TEMP+"/package/dist/decap-cms.js";const s=f.readFileSync(p,"utf8");const i=s.indexOf("decap-cms-user");console.log("STORE",s.slice(i-50,i+480));console.log("VERSIONS",[...s.matchAll(/.{12}4\.(?:17|18)\.\d+.{18}/g)].slice(0,30).map(x=>x[0]));const m=JSON.parse(f.readFileSync(p+".map"));console.log("LODASH SOURCES",m.sources.filter(x=>x.includes("lodash") && x.endsWith("/lodash.js")).slice(0,30));'
           node tools/import-cms.mjs "$RUNNER_TEMP/package" "$RUNNER_TEMP/decap-cms-3.18.0.tgz"
           npm test
           npm run build

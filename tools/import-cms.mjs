@@ -17,8 +17,12 @@ const original = await readFile(bundle, 'utf8');
 
 const storage = /storageKey="decap-cms-user";retrieve\(\)\{const (\w+)=window\.localStorage\.getItem\(this\.storageKey\);return \1&&JSON\.parse\(\1\)\}store\((\w+)\)\{window\.localStorage\.setItem\(this\.storageKey,JSON\.stringify\(\2\)\)\}logout\(\)\{window\.localStorage\.removeItem\(this\.storageKey\)\}/g;
 assert.equal([...original.matchAll(storage)].length, 1, 'Review the upstream auth store before importing');
-const memoryStore = 'currentUser=null;retrieve(){return this.currentUser}store(user){this.currentUser=user}logout(){this.currentUser=null}';
-const patched = original.replace(storage, memoryStore);
+const memoryStore = 'retrieve(){return portfolioAuthSession.user}store(user){portfolioAuthSession.user=user}logout(){portfolioAuthSession.user=null}';
+const fallback = 'window.localStorage.getItem("decap-cms-user")';
+const replaced = original.replace(storage, memoryStore);
+assert.equal(replaced.split(fallback).length, 2, 'Review the upstream token fallback');
+const patched = ';(() => { const portfolioAuthSession = {user:null};\n' +
+  replaced.replace(fallback, 'JSON.stringify(portfolioAuthSession.user)') + '\n})();\n';
 assert(!patched.includes('"decap-cms-user"'), 'Unexpected second auth store');
 
 const sha256 = data => createHash('sha256').update(data).digest('hex');

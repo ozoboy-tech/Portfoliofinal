@@ -18,13 +18,13 @@ test('La distribution Decap correspond au manifeste et emploie la dépendance co
   assert.equal(cms.verified_lodash_version,'4.18.1');
   assert(cms.verified_lodash_modules > 0);
   assert(!source.includes('"decap-cms-user"'));
-  const store = source.match(/class [\w$]+\{currentUser=null;retrieve\(\)\{[^{}]*\}store\(user\)\{[^{}]*\}logout\(\)\{[^{}]*\}\}/);
+  const store = source.match(/class [\w$]+\{retrieve\(\)\{[^{}]*\}store\(user\)\{[^{}]*\}logout\(\)\{[^{}]*\}\}/);
   assert(store, 'Stockage de session introuvable dans le bundle');
-  const Store = runInNewContext('(' + store[0] + ')');
-  const first = new Store();
+  const newTab = () => runInNewContext('const portfolioAuthSession={user:null};new (' + store[0] + ')()');
+  const first = newTab();
   first.store({token:'test-only'});
   assert.equal(first.retrieve().token, 'test-only');
-  assert.equal(new Store().retrieve(), null);
+  assert.equal(newTab().retrieve(), null);
   first.logout();
   assert.equal(first.retrieve(), null);
 });

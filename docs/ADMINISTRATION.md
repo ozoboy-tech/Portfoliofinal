@@ -46,7 +46,7 @@ En local, sans dépôt configuré, `/admin/` affiche les instructions de configu
 
 Dans les contextes Netlify autres que `production`, la gestion des projets est désactivée et les pages portent `noindex`. Connectez-vous sur le domaine principal pour éditer. Ceci évite de modifier le contenu de production depuis une prévisualisation.
 
-Les brouillons passent par une pull request. Vérifiez qu'une édition avec image réussit, puis imposez sur `main` les pull requests et le contrôle GitHub Actions `verify`. Pour une opération de médiathèque bloquée, ajoutez le fichier par PR.
+Les brouillons passent par une pull request. Vérifiez qu'une édition avec image réussit, puis imposez sur `main` les pull requests et le contrôle GitHub Actions `verify`. Le fichier `.github/rulesets/main.json` peut être importé dans les règles de branche GitHub. Pour une opération de médiathèque bloquée, ajoutez le fichier par PR.
 
 Après migration, révoquez l'ancienne autorisation de l'application OAuth du portfolio dans les paramètres personnels GitHub. Reconnectez-vous puis vérifiez le consentement `public_repo`. La session de l’éditeur est conservée en mémoire et une actualisation demande une nouvelle connexion.
 

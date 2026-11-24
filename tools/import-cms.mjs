@@ -26,10 +26,12 @@ const patched = ';(() => { const portfolioAuthSession = {user:null};\n' +
 assert(!patched.includes('"decap-cms-user"'), 'Unexpected second auth store');
 
 const sha256 = data => createHash('sha256').update(data).digest('hex');
+const archiveHash = sha256(await readFile(archive));
+assert.equal(archiveHash, '0fdbf51041a6f1ecda549d83fbe970ee3998ae7b95ae2bb89c51cbea98b30c1c', 'Archive Decap inattendue');
 const entry = {
   package: pkg.name, version: pkg.version, license: pkg.license,
   source: 'https://registry.npmjs.org/decap-cms/-/decap-cms-3.18.0.tgz',
-  archive_sha256: sha256(await readFile(archive)),
+  archive_sha256: archiveHash,
   upstream_bundle_sha256: sha256(original),
   patch: 'In-memory auth store (tools/import-cms.mjs)',
   files: []

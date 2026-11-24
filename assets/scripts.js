@@ -1,5 +1,6 @@
 "use strict";
 (() => {
+  try { window.localStorage.removeItem('decap-cms-user'); } catch { /* Stockage désactivé par le navigateur. */ }
   const root = document.documentElement;
   const media = window.matchMedia('(prefers-reduced-motion: reduce)');
   const motionButton = document.querySelector('.motion-toggle');

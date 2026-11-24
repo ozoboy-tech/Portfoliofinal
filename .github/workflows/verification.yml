@@ -17,3 +17,11 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm test
       - run: npm run build
+      - name: Vérifier l'écran de connexion CMS avec Chrome
+        run: |
+          node tools/serve.mjs &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          curl --retry 15 --retry-connrefused --retry-delay 1 -fsS http://127.0.0.1:4173/admin/ -o /dev/null
+          google-chrome --headless --no-sandbox --disable-gpu --virtual-time-budget=15000 --dump-dom http://127.0.0.1:4173/admin/ > "$RUNNER_TEMP/admin.html"
+          node -e 'const html=require("fs").readFileSync(process.env.RUNNER_TEMP+"/admin.html","utf8");require("node:assert/strict")(/<button\b[^>]*>[\s\S]*?GitHub[\s\S]*?<\/button>/i.test(html),"Bouton de connexion GitHub absent");'

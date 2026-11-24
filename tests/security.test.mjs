@@ -37,6 +37,8 @@ test('L’administration cible un dépôt explicite et reste fermée en prévisu
   assert.equal(cmsConfiguration(site,{}).config.backend.repo,'ozoboy-tech/Portfoliofinal');
   const env={CONTEXT:'production',CMS_REPOSITORY:'owner/project'};
   const cms=cmsConfiguration(site,env);assert.equal(cms.config.backend.repo,'owner/project');
+  assert.equal(cms.config.backend.auth_scope,'public_repo');
+  assert.equal(cms.config.publish_mode,'editorial_workflow');
   assert.equal(cms.config.backend.branch,'main');
   assert.equal(cms.config.collections[0].create,true);assert.equal(cms.config.collections[0].delete,true);
   assert.equal(cmsConfiguration(site,{...env,CONTEXT:'deploy-preview'}).enabled,false);

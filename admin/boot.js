@@ -5,6 +5,7 @@ window.CMS_MANUAL_INIT = true;
   const status = document.getElementById('admin-status');
   const help = document.getElementById('admin-help');
   try {
+    window.localStorage.removeItem('decap-cms-user');
     const response = await fetch('/admin/cms-config.json', {cache:'no-store'});
     if (!response.ok) throw new Error('Configuration indisponible');
     const settings = await response.json();

@@ -17,6 +17,12 @@ test('Ajout, changement de statut, masquage et suppression régénèrent pages e
     assert((await readFile(join(root,'dist/index.html'),'utf8')).includes('Projet test'));
     assert((await readFile(join(root,'dist/projets/test-projet/index.html'),'utf8')).includes('Prototype'));
     assert((await readFile(join(root,'dist/sitemap.xml'),'utf8')).includes('/projets/test-projet/'));
+    const errorPage = await readFile(join(root,'dist/404.html'),'utf8');
+    const [meta] = errorPage.match(/<meta http-equiv="Content-Security-Policy"[^>]+>/) || [];
+    assert(meta && errorPage.indexOf(meta) < errorPage.indexOf('<script'));
+    const headers = await readFile(join(root,'dist/_headers'),'utf8');
+    const httpPolicy = headers.match(/\/404\.html\n  Content-Security-Policy: ([^\n]+)/)[1];
+    assert.equal(meta.match(/content="([^"]+)"/)[1].replaceAll('&#39;', "'"), httpPolicy.replace("frame-ancestors 'none'; ", ''));
     project.status='production';await writeFile(path,JSON.stringify(project));await build({root,env:{}});
     assert((await readFile(join(root,'dist/projets/test-projet/index.html'),'utf8')).includes('En production'));
     project.published=false;await writeFile(path,JSON.stringify(project));await build({root,env:{}});

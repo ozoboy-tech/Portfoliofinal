@@ -15,7 +15,8 @@ test('La distribution Decap correspond au manifeste et emploie la dépendance co
     if (path.endsWith('.js')) assert(!bytes.includes('VERSION="4.17.21"'), path);
   }
   const source = await readFile(new URL('admin/vendor/decap-cms.js', root), 'utf8');
-  assert(source.includes('4.18.1'));
+  assert.equal(cms.verified_lodash_version,'4.18.1');
+  assert(cms.verified_lodash_modules > 0);
   assert(!source.includes('decap-cms-user'));
   const store = source.match(/class [\w$]+\{currentUser=null;retrieve\(\)\{[^{}]*\}store\(user\)\{[^{}]*\}logout\(\)\{[^{}]*\}\}/);
   assert(store, 'Stockage de session introuvable dans le bundle');

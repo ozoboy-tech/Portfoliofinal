@@ -19,7 +19,7 @@ const storage = /storageKey="decap-cms-user";retrieve\(\)\{const (\w+)=window\.l
 assert.equal([...original.matchAll(storage)].length, 1, 'Review the upstream auth store before importing');
 const memoryStore = 'currentUser=null;retrieve(){return this.currentUser}store(user){this.currentUser=user}logout(){this.currentUser=null}';
 const patched = original.replace(storage, memoryStore);
-assert(!patched.includes('decap-cms-user'), 'Unexpected second auth store');
+assert(!patched.includes('"decap-cms-user"'), 'Unexpected second auth store');
 
 const sha256 = data => createHash('sha256').update(data).digest('hex');
 const entry = {

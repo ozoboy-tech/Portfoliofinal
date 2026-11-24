@@ -23,7 +23,7 @@ jobs:
             mkdir "$RUNNER_TEMP/$package"
             tar -xzf "$RUNNER_TEMP/$package-4.18.1.tgz" --strip-components=1 -C "$RUNNER_TEMP/$package"
           done
-          node -e 'const fs=require("fs");const s=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+"/package/dist/decap-cms.js.map"));console.log("LODASH",s.sources.filter(x=>x.includes("lodash")).slice(0,5));'
+          node -e 'const s=require("fs").readFileSync(process.env.RUNNER_TEMP+"/package/dist/decap-cms.js","utf8");console.log("KEYS",Array.from(s.matchAll(/.{70}decap-cms-user.{100}/g),m=>m[0]));'
           node tools/import-cms.mjs "$RUNNER_TEMP/package" "$RUNNER_TEMP/decap-cms-3.18.0.tgz"
           npm test
           npm run build

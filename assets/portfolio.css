@@ -86,10 +86,10 @@ body .menu-dialog, .home-page .menu-dialog { padding: clamp(1.25rem, 4vw, 4rem);
 .site-footer { padding-top: 0; }
 .site-footer .footer-bottom { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; padding-block: 1.5rem; border: 0; }
 .footer-bottom .back-top { margin-left: auto; }
-.work-index { padding-bottom: clamp(3rem, 7vw, 7rem); }
+.work-index { width: min(100%, 120rem); padding-bottom: clamp(3rem, 7vw, 7rem); }
 .work-index header {
   display: flex; flex-direction: column; justify-content: end; padding: clamp(2rem, 5vw, 5rem) var(--gutter);
-  min-height: min(68svh, 44rem); margin: 0 calc(-1 * var(--gutter)) clamp(2.5rem, 5vw, 5rem);
+  min-height: clamp(28rem, calc(100svh - 76px), 64rem); margin: 0 calc(-1 * var(--gutter)) clamp(2.5rem, 5vw, 5rem);
   background: linear-gradient(90deg, #06071aef, #080e28a8 52%, #0a193f66), url('/assets/images/signal.svg') center 45% / cover #123557;
   background-blend-mode: normal, luminosity;
 }

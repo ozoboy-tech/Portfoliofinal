@@ -15,6 +15,7 @@ test('Ajout, changement de statut, masquage et suppression régénèrent pages e
     await writeFile(path,JSON.stringify(project));
     const first=await build({root,env:{}});assert.equal(first.projects,4);
     assert((await readFile(join(root,'dist/index.html'),'utf8')).includes('Projet test'));
+    assert((await readFile(join(root,'dist/projets/index.html'),'utf8')).includes('href="/projets/test-projet/"'));
     assert((await readFile(join(root,'dist/projets/test-projet/index.html'),'utf8')).includes('Prototype'));
     assert((await readFile(join(root,'dist/sitemap.xml'),'utf8')).includes('/projets/test-projet/'));
     const errorPage = await readFile(join(root,'dist/404.html'),'utf8');
@@ -28,6 +29,7 @@ test('Ajout, changement de statut, masquage et suppression régénèrent pages e
     project.published=false;await writeFile(path,JSON.stringify(project));await build({root,env:{}});
     assert(!(await exists(join(root,'dist/projets/test-projet/index.html'))));
     assert(!(await readFile(join(root,'dist/index.html'),'utf8')).includes('Projet test'));
+    assert(!(await readFile(join(root,'dist/projets/index.html'),'utf8')).includes('href="/projets/test-projet/"'));
     assert(!(await readFile(join(root,'dist/sitemap.xml'),'utf8')).includes('/projets/test-projet/'));
     await rm(path);assert.equal((await build({root,env:{}})).projects,3);
     await build({root,env:{CONTEXT:'deploy-preview'}});

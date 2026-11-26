@@ -133,8 +133,8 @@
   const message = document.getElementById('message');
   if (projectName && projectName.length <= 90 && message && !message.value) {
     message.value = `Bonjour Ousmane, j’aimerais échanger sur le projet ${projectName}.`;
-    const subject = document.getElementById('subject');
-    if (subject) subject.value = 'Échanger sur un projet du portfolio';
+    const subject = document.querySelector('input[name="subject"][value="Échanger sur un projet du portfolio"]');
+    if (subject) subject.checked = true;
   }
   // La soumission du formulaire reste native vers Formspree.
 })();

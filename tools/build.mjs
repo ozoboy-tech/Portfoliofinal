@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
 import {validateProject,validateURL,validateImage,escapeHTML} from '../src/schema.mjs';
-import {homepage,projectpage,resumepage,privacypage,notfound} from '../src/templates.mjs';
+import {homepage,projectIndex,projectpage,resumepage,privacypage,notfound} from '../src/templates.mjs';
 import {cmsConfiguration} from '../src/cms.mjs';
 
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)),'..');
@@ -65,7 +65,7 @@ export function securityHeaders(pages,noindex=false) {
   // Ces exceptions sont confinées à /admin/, jamais appliquées au site public.
   const adminCSP="default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://avatars.githubusercontent.com https://raw.githubusercontent.com https://media.githubusercontent.com; font-src 'self' data:; connect-src 'self' blob: https://api.github.com https://github.com https://api.netlify.com https://raw.githubusercontent.com https://media.githubusercontent.com; frame-src 'self' blob: https://api.netlify.com; worker-src 'self' blob:; form-action 'self' https://github.com https://api.netlify.com; upgrade-insecure-requests";
   let result=`/*\n  X-Content-Type-Options: nosniff\n  X-Frame-Options: DENY\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()\n  Cross-Origin-Opener-Policy: same-origin-allow-popups\n  Strict-Transport-Security: max-age=31536000\n${noindex?'  X-Robots-Tag: noindex, nofollow\n':''}`;
-  for (const pattern of ['/','/index.html','/parcours','/parcours/*','/confidentialite','/confidentialite/*','/projets/*','/404.html']) result+=`\n${pattern}\n  Content-Security-Policy: ${publicCSP}\n  Cache-Control: public, max-age=0, must-revalidate\n`;
+  for (const pattern of ['/','/index.html','/parcours','/parcours/*','/confidentialite','/confidentialite/*','/projets','/projets/*','/404.html']) result+=`\n${pattern}\n  Content-Security-Policy: ${publicCSP}\n  Cache-Control: public, max-age=0, must-revalidate\n`;
   result+=`\n/admin/*\n  Content-Security-Policy: ${adminCSP}\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: no-store\n\n/admin\n  X-Robots-Tag: noindex, nofollow\n\n/assets/*\n  Content-Security-Policy: default-src 'none'; frame-ancestors 'none'; sandbox\n  Cache-Control: public, max-age=3600\n`;
   return result;
 }
@@ -85,6 +85,7 @@ export async function build({root=ROOT,out=resolve(root,'dist'),env=process.env}
   const cms=cmsConfiguration(site,env);
   const pages=new Map([
     ['index.html',homepage(site,projects,noindex)],
+    ['projets/index.html',projectIndex(site,projects,noindex)],
     ['parcours/index.html',resumepage(site,noindex)],
     ['confidentialite/index.html',privacypage(site,noindex)],
     ['404.html',notfound(site)]
@@ -104,7 +105,7 @@ export async function build({root=ROOT,out=resolve(root,'dist'),env=process.env}
   for(const [name,html] of pages) { const path=resolve(out,name);await mkdir(dirname(path),{recursive:true});await writeFile(path,html); }
   for(const name of ['assets','admin']) { await mkdir(resolve(out,name),{recursive:true});await copyTree(resolve(root,name),resolve(out,name),name==='assets'); }
   await writeFile(resolve(out,'admin/cms-config.json'),JSON.stringify(cms,null,2)+'\n');
-  const paths=['/','/parcours/','/confidentialite/',...projects.map(p=>`/projets/${p.slug}/`)];
+  const paths=['/','/projets/','/parcours/','/confidentialite/',...projects.map(p=>`/projets/${p.slug}/`)];
   await writeFile(resolve(out,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths.map(path=>`  <url><loc>${escapeHTML(site.url+path)}</loc></url>`).join('\n')}\n</urlset>\n`);
   await writeFile(resolve(out,'robots.txt'),noindex?'User-agent: *\nDisallow: /\n':`User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${site.url}/sitemap.xml\n`);
   await writeFile(resolve(out,'_headers'),securityHeaders(pages,noindex));

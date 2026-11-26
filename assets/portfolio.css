@@ -63,7 +63,7 @@ body .menu-dialog, .home-page .menu-dialog { padding: clamp(1.25rem, 4vw, 4rem);
 .skill-copy .text-link { margin-top: 1rem; }
 .skill-image { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 36%; height: auto; aspect-ratio: 1.9; object-fit: contain; background: var(--panel); border-radius: 1rem; }
 .contact-section, .home-page #contenu > .contact-section {
-  padding-block: clamp(2.5rem, 6vw, 6rem); border: 0; background: transparent;
+  width: min(100%, 120rem); padding-block: clamp(2.5rem, 5vw, 5rem); border: 0; background: transparent;
 }
 .contact-grid { align-items: center; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2rem, 6vw, 6rem);
   padding: clamp(1.25rem, 4vw, 4.2rem); border-radius: 1.35rem; border: 1px solid #222d49;

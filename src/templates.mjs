@@ -77,7 +77,7 @@ ${noindex ? '<meta name="robots" content="noindex, nofollow">' : ''}
   ${home ? '<script src="/assets/intro-init.js?v=20260927-3"></script>' : ''}
   <link rel="stylesheet" href="/assets/styles.css?v=20260927-4">
   ${home ? '<link rel="stylesheet" href="/assets/about-scroll.css?v=3">' : ''}
-  ${home ? '<link rel="stylesheet" href="/assets/hero.css?v=1"><script src="/assets/hero-particles.js?v=1" defer></script>' : ''}
+  ${home ? '<link rel="stylesheet" href="/assets/hero.css?v=1"><link rel="stylesheet" href="/assets/projects-showcase.css?v=1"><script src="/assets/hero-particles.js?v=1" defer></script><script src="/assets/projects-showcase.js?v=1" defer></script>' : ''}
   <script type="application/ld+json">${jsonForHTML(data)}</script>
   <script src="/assets/scripts.js?v=20260927-4" defer></script>
   ${home ? '<script src="/assets/about-scroll.js?v=3" defer></script><script type="module" src="/assets/oc3d/oc-monogram.js?v=1"></script>' : ''}
@@ -92,6 +92,18 @@ export function projectCard(project, index) {
       <div class="project-visual"><img src="${e(project.image || '/assets/images/project-default.svg')}" width="1200" height="800" loading="lazy" decoding="async" alt="${e(project.imageAlt || 'Composition graphique évoquant un projet numérique')}"><span class="project-index" aria-hidden="true">${String(index+1).padStart(2,'0')}</span><span class="project-arrow" aria-hidden="true">↗</span></div>
       <div class="project-meta"><div><p class="eyebrow">${e(project.category)}</p><h3 id="project-${project.slug}">${e(project.title)}</h3></div><span class="status status-${project.status}">${e(statuses[project.status])}</span></div>
       <p class="project-summary">${e(project.summary)}</p>
+    </a>
+  </article>`;
+}
+
+function showcaseCard(project) {
+  return `<article class="showcase-card" data-showcase-card>
+    <a class="showcase-card-link" href="/projets/${e(project.slug)}/" aria-label="Découvrir le projet ${e(project.title)}">
+      <div class="showcase-card-media">
+        <img src="${e(project.image || '/assets/images/project-default.svg')}" width="1200" height="800" loading="lazy" decoding="async" alt="${e(project.imageAlt || 'Illustration du projet')}">
+      </div>
+      <div class="showcase-card-caption"><span>${e(project.imageCaption || 'Illustration du projet')}</span></div>
+      <div class="showcase-card-details"><div><h3>${e(project.title)}</h3><p>${e(statuses[project.status])}</p></div><span aria-hidden="true">↗</span></div>
     </a>
   </article>`;
 }
@@ -113,6 +125,10 @@ function contact(site) {
 }
 
 export function homepage(site, projects, noindex) {
+  const featured = projects.find(project => project.title === 'PharmaGuard') || projects[0];
+  const featuredLink = featured ? `/projets/${e(featured.slug)}/` : '#contact';
+  const featuredImage = featured?.image || '/assets/images/project-default.svg';
+  const projectCards = featured ? [featured, ...projects.filter(project => project !== featured)] : [];
   const body = `<section class="particle-hero" aria-labelledby="hero-title">
     <div class="particle-hero-inner">
       <div class="particle-hero-copy">
@@ -158,7 +174,27 @@ export function homepage(site, projects, noindex) {
       <a class="approach-next" href="#projets">Découvrir mes réalisations <span aria-hidden="true">↓</span></a>
     </div>
   </section>
-  <section class="projects-section wrap section-space" id="projets" aria-labelledby="projects-title"><div class="section-heading"><p class="eyebrow">01 / PROJETS CHOISIS</p><p class="section-side-note">Des idées ancrées<br>dans des besoins concrets.</p></div><div class="section-title-row"><h2 id="projects-title">Du besoin<br>au <span class="serif-word">produit.</span></h2><p>${projects.length ? `${String(projects.length).padStart(2,'0')} projets à découvrir` : 'De nouveaux projets à venir'}</p></div><div class="project-grid">${projects.map(projectCard).join('')}</div></section>
+  <section class="showcase-section" id="projets" aria-labelledby="projects-title">
+    <div class="showcase-inner">
+      <div class="showcase-overline"><p>Projets</p><p>Des idées ancrées dans des besoins concrets.</p></div>
+      <h2 id="projects-title" class="showcase-title">Du besoin<br><span>au produit.</span></h2>
+      ${featured ? `<div class="showcase-feature">
+        <div class="showcase-feature-copy"><span class="showcase-rule" aria-hidden="true"></span>
+          <h3>${e(featured.title)}</h3>
+          <p class="showcase-meta">${e(featured.category)} · ${e(statuses[featured.status])}</p>
+          <p class="showcase-summary">${e(featured.summary)}</p>
+          <a class="showcase-feature-link" href="${featuredLink}">Explorer le projet <span aria-hidden="true">↗</span></a>
+        </div>
+        <figure class="showcase-feature-figure" data-feature-figure>
+          <div class="showcase-feature-frame" data-feature-frame><img src="${e(featuredImage)}" width="1200" height="800" decoding="async" alt="${e(featured.imageAlt || 'Illustration du projet')}"></div>
+          <figcaption>${e(featured.imageCaption || 'Illustration du projet')}</figcaption>
+        </figure>
+      </div>` : '<p>De nouveaux projets à venir.</p>'}
+      ${projectCards.length ? `<div class="showcase-gallery-heading"><p>Explorer les réalisations <span>· ${String(projectCards.length).padStart(2, '0')}</span></p>
+        <div class="showcase-controls" data-gallery-controls hidden><button type="button" data-gallery-prev aria-label="Projet précédent">←</button><button type="button" data-gallery-next aria-label="Projet suivant">→</button></div></div>
+      <div class="showcase-gallery" data-gallery aria-label="Galerie des projets">${projectCards.map(showcaseCard).join('')}</div>` : ''}
+    </div>
+  </section>
 
 
 

@@ -150,3 +150,27 @@ body .menu-dialog, .home-page .menu-dialog { padding: clamp(1.25rem, 4vw, 4rem);
   .profile-grid figure, .skill-image, .blue-button { display: none; }
   .spectrum { color: #111; -webkit-text-fill-color: currentColor; }
 }
+
+html:has(body.home-page) {
+    scroll-behavior: auto;
+  }
+  
+  .home-page,
+  .home-page *,
+  .home-page *::before,
+  .home-page *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .home-page .motion-toggle {
+    display: none !important;
+  }
+  
+  .home-page .showcase-feature-frame,
+  .home-page .showcase-card-link:hover img,
+  .home-page .project-link:hover .project-visual > img,
+  .home-page .project-link:hover .project-arrow {
+    transform: none !important;
+  }

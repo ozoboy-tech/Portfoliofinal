@@ -2,7 +2,7 @@
 .home-page #contenu > .showcase-section {
   --showcase-muted: #aebbd0;
   color: #f4f6ff;
-  background: radial-gradient(ellipse at 80% 25%, #102857 0%, #080f29 43%, #06071a 72%);
+  background: #000;
   padding: clamp(84px, 9vw, 144px) clamp(24px, 6.5vw, 116px) clamp(90px, 10vw, 150px);
   overflow: clip;
   scroll-margin-top: 28px;

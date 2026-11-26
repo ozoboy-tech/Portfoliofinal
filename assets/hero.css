@@ -1,7 +1,7 @@
 /* Hero validé — les styles sont limités à l’accueil et à sa navigation. */
-.home-page { background: #06071a; }
+.home-page { background: #000000; }
 .home-page .site-header {
-  color: #f5f6ff; background: #06071a; min-height: 92px;
+  color: #f5f6ff; background: #000000; min-height: 92px;
   width: 100%; padding-inline: clamp(24px, 5.5vw, 100px); gap: 28px;
 }
 .home-page .hero-brand-mark { font: 700 34px/1 var(--display); letter-spacing: -.08em; }
@@ -13,21 +13,21 @@
 .home-page .header-contact { font-size: 14px; white-space: nowrap; border: 0; padding: 0; margin-left: 0; }
 .home-page .header-contact:hover { background: transparent; color: #68e4f2; }
 .home-page .site-header { border-bottom: 0; }
-.home-page .site-footer { background: var(--bg); }
+.home-page .site-footer { background: #000; }
 .home-page .menu-open:not([hidden]) { display: inline-flex; color: #f5f6ff; }
 .home-page .menu-open > span:first-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .home-page .menu-dialog { background: #0b1026; color: #f5f6ff; border-color: #27334e; --accent: #37d9ee; }
 .home-page .menu-dialog::backdrop { background: #020415d9; backdrop-filter: blur(14px); }
 .home-page .site-intro { --bg: #06071a; --panel: #0b1537; --accent: #37d9ee; --text: #f5f6ff; }
 html.intro-ready .home-page .site-intro { background: #06071a; color: #f5f6ff; --ink: #f5f6ff; }
-.home-page #contenu > :not(.particle-hero) { background-color: var(--bg); }
+.home-page #contenu > :not(.particle-hero) { background-color: #000; }
 .particle-hero {
   position: relative; overflow: hidden; isolation: isolate; color: #f5f6ff;
-  background: radial-gradient(ellipse at 79% 45%, #0b2048 0%, #080f29 32%, #05081a 67%);
+  background: #000;  
   min-height: calc(100svh - 92px); padding: 40px clamp(24px, 6.5vw, 116px) 88px;
   display: flex; align-items: center;
 }
-.particle-hero-inner { width: 100%; max-width: 1600px; margin: auto; display: grid; grid-template-columns: 1.12fr 1fr; align-items: center; gap: 0; }
+.particle-hero-inner { width: 100%; max-width: 1000px; margin: auto; }
 .particle-hero-copy { position: relative; z-index: 2; }
 .particle-hero-name { margin: 0 0 24px; color: #b5b8c9; text-transform: uppercase; letter-spacing: .2em; font-size: 13px; font-weight: 700; }
 .particle-hero h1 { margin: 0; font-family: var(--body); font-weight: 800; font-size: clamp(32px, 3.6vw, 66px); letter-spacing: -.045em; line-height: 1.16; }

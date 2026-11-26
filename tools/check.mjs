@@ -28,7 +28,7 @@ for(const path of files.filter(f=>f.endsWith('.html'))) {
   for(const match of html.matchAll(/<img\b([^>]*)>/g)) assert(/\balt="[^"]*"/.test(match[1])&&/\bwidth="\d+"/.test(match[1])&&/\bheight="\d+"/.test(match[1]),`Image sans alt/dimensions : ${path}`);
   for(const match of html.matchAll(/\b(?:aria-labelledby|aria-describedby)="([^"]+)"/g)) for(const id of match[1].split(' ')) assert(ids.includes(id),`Référence ARIA manquante : ${id}`);
   for(const match of html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)) {
-    if(match[1].includes('application/ld+json')) {
+    if(match[1].includes('application/ld+json') || match[1].includes('importmap')) {
       JSON.parse(match[2]);
       assert(headers.includes(`'sha256-${createHash('sha256').update(match[2]).digest('base64')}'`),'Empreinte CSP JSON-LD absente');
     } else assert(/\bsrc="\//.test(match[1]) && !match[2].trim(),'Script inline ou tiers non attendu');

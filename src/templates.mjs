@@ -7,17 +7,19 @@ const external = (href, label) => href ? `<a class="button button-outline" href=
 
 function header(home) {
   const prefix = home ? '' : '/';
-  const items = `<a href="${prefix}#projets">Projets</a><a href="${prefix}#profil">Profil</a><a href="${prefix}#expertises">Expertises</a>`;
+  const items = home
+    ? '<a href="#haut" aria-current="page">Accueil</a><a href="#projets">Projets</a><a href="/parcours/">Parcours</a><a href="#expertises">Expertises</a>'
+    : `<a href="${prefix}#projets">Projets</a><a href="${prefix}#profil">Profil</a><a href="${prefix}#expertises">Expertises</a>`;
   return `<a class="skip-link" href="#contenu">Aller au contenu</a>
   <header class="site-header wrap" id="haut">
-    <a class="brand" href="/" aria-label="Ousmane Coulibaly — Accueil"><img src="/assets/images/monogram.svg" width="44" height="44" alt=""><span>OUSMANE<br>COULIBALY<span class="brand-dot">.</span></span></a>
+    <a class="brand" href="/" aria-label="Ousmane Coulibaly - Accueil">${home ? '<span class="hero-brand-mark" aria-hidden="true">OC</span>' : '<img src="/assets/images/monogram.svg" width="44" height="44" alt=""><span>OUSMANE<br>COULIBALY<span class="brand-dot">.</span></span>'}</a>
     <nav class="header-nav" aria-label="Navigation principale">${items}</nav>
-    <a class="header-contact" href="${prefix}#contact">Échangeons ${arrow}</a>
+    <a class="header-contact" href="${prefix}#contact">${home ? 'Contact' : 'Échangeons'} ${arrow}</a>
     <button class="menu-open" type="button" aria-haspopup="dialog" aria-controls="menu-dialog" hidden><span>Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
   </header>
   <dialog class="menu-dialog" id="menu-dialog" aria-labelledby="menu-title">
     <div class="menu-top"><p id="menu-title" class="eyebrow">Explorer le portfolio</p><button type="button" class="menu-close" autofocus>Fermer <span aria-hidden="true">×</span></button></div>
-    <nav aria-label="Navigation mobile">${items}<a href="${prefix}#contact">Contact</a><a href="/parcours/">Mon parcours</a></nav>
+    <nav aria-label="Navigation mobile">${items}<a href="${prefix}#contact">Contact</a>${home ? '' : '<a href="/parcours/">Mon parcours</a>'}</nav>
     <p class="menu-signature">Données. Code. Usages.</p>
   </dialog>`;
 }
@@ -50,7 +52,7 @@ export function page({site, title, description = site.description, path = '/', b
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#64242F">
+  <meta name="theme-color" content="${home ? '#06071A' : '#64242F'}">
   <title>${e(title)}</title>
   <meta name="description" content="${e(description)}">
   <meta name="author" content="${e(site.name)}">
@@ -74,12 +76,13 @@ ${noindex ? '<meta name="robots" content="noindex, nofollow">' : ''}
   <link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   ${home ? '<script src="/assets/intro-init.js?v=20260927-3"></script>' : ''}
   <link rel="stylesheet" href="/assets/styles.css?v=20260927-4">
-  ${home ? '<link rel="stylesheet" href="/assets/about-scroll.css?v=2">' : ''}
+  ${home ? '<link rel="stylesheet" href="/assets/about-scroll.css?v=3">' : ''}
+  ${home ? '<link rel="stylesheet" href="/assets/hero.css?v=1"><script src="/assets/hero-particles.js?v=1" defer></script>' : ''}
   <script type="application/ld+json">${jsonForHTML(data)}</script>
   <script src="/assets/scripts.js?v=20260927-4" defer></script>
-  ${home ? '<script src="/assets/about-scroll.js?v=2" defer></script><script type="module" src="/assets/oc3d/oc-monogram.js?v=1"></script>' : ''}
+  ${home ? '<script src="/assets/about-scroll.js?v=3" defer></script><script type="module" src="/assets/oc3d/oc-monogram.js?v=1"></script>' : ''}
 </head>
-<body>${home ? intro() : ''}${header(home)}<main id="contenu" tabindex="-1">${body}</main>${footer(site)}</body>
+<body${home ? ' class="home-page"' : ''}>${home ? intro() : ''}${header(home)}<main id="contenu" tabindex="-1">${body}</main>${footer(site)}</body>
 </html>`;
 }
 
@@ -110,41 +113,54 @@ function contact(site) {
 }
 
 export function homepage(site, projects, noindex) {
-  const portrait = site.portrait ? `<img class="portrait" src="${e(site.portrait)}" width="800" height="1000" fetchpriority="high" alt="${e(site.portraitAlt)}">` : `<img class="signal-art" src="/assets/images/signal.svg" width="800" height="1000" fetchpriority="high" alt="">`;
-  const body = `<section class="hero wrap" aria-labelledby="hero-title">
-    <div class="hero-topline"><p class="eyebrow">DATA SCIENCE / MLOPS / FULL-STACK</p><p class="eyebrow hero-location">BAMAKO, MALI <span class="live-dot" aria-hidden="true"></span></p></div>
-    <div class="hero-grid"><div class="hero-copy"><h1 id="hero-title">Ousmane<br>Coulibaly<span class="accent">.</span></h1><p class="hero-role">Data Scientist &amp; développeur Full-Stack<br><span>avec une approche MLOps.</span></p><p class="hero-description">Comprendre la donnée.<br>Construire des produits utiles.</p><div class="hero-actions"><a class="button button-accent" href="#projets">Explorer mes projets ${arrow}</a><a class="text-link" href="/parcours/">Mon parcours <span aria-hidden="true">↗</span></a></div></div>
-      <figure class="hero-art${site.portrait ? ' has-portrait' : ''}">${portrait}<span class="art-corner" aria-hidden="true">OC / 01</span><figcaption><span>ANALYSER</span><span>CONSTRUIRE</span><span>DÉPLOYER</span></figcaption></figure>
-    </div><div class="hero-bottom"><p>À la croisée de la donnée,<br>du logiciel et des usages.</p><a href="#projets" class="scroll-link">Découvrir <span aria-hidden="true">↓</span></a><p class="hero-number" aria-hidden="true">PORTFOLIO / 2026</p></div>
-  </section>
-  <div class="discipline-band" aria-hidden="true"><span>DATA</span><i>✳</i><span>CODE</span><i>✳</i><span>IMPACT</span><i>✳</i><span>DATA</span><i>✳</i></div>
-  <section class="projects-section wrap section-space" id="projets" aria-labelledby="projects-title"><div class="section-heading"><p class="eyebrow">01 / PROJETS CHOISIS</p><p class="section-side-note">Des idées ancrées<br>dans des besoins concrets.</p></div><div class="section-title-row"><h2 id="projects-title">Du besoin<br>au <span class="serif-word">produit.</span></h2><p>${projects.length ? `${String(projects.length).padStart(2,'0')} projets à découvrir` : 'De nouveaux projets à venir'}</p></div><div class="project-grid">${projects.map(projectCard).join('')}</div></section>
-
-<section class="about-section about-scroll wrap" id="profil" aria-labelledby="about-title">
-    <div class="about-scroll-track">
-      <div class="about-scroll-stage">
-        <div class="section-heading">
-          <p class="eyebrow">02 / UNE APPROCHE TRANSVERSALE</p>
-          <a class="text-link" href="/parcours/">Parcours &amp; CV ${arrow}</a>
-        </div>
-        <h2 id="about-title" class="sr-only">Faire le lien entre la donnée et le terrain.</h2>
-        <div class="about-scroll-body">
-          <aside class="about-3d-space" aria-label="Monogramme OC">
-            <oc-monogram finish="champagne" motion="float" role="group" aria-label="Monogramme OC interactif en trois dimensions">
-              <img src="/assets/oc3d/oc-poster.png" alt="Monogramme OC" width="880" height="492" loading="lazy">
-            </oc-monogram>
-          </aside>
-          <p class="about-scroll-text">
-          <span data-about-reveal>Je suis Ousmane Alou Coulibaly. J’associe le développement logiciel à la Data Science et au MLOps pour donner une forme utile aux idées. Mon parcours en génie logiciel m’a appris à relier les besoins des utilisateurs aux choix techniques. Du premier échange à l’application, j’accorde de l’importance à la clarté, à la fiabilité et à ce que le produit apporte réellement. Pour une équipe qui recrute comme pour un client qui porte un projet, mon point de départ reste le même : comprendre le problème avant de construire la solution.</span>
-          </p>
-        </div>
-        <div class="about-links">
-          <a class="text-link" href="/assets/documents/CV_Ousmane_Coulibaly.pdf" download>Télécharger mon CV ${arrow}</a>
-          <a class="text-link" href="#contact">Faire connaissance ${arrow}</a>
+  const body = `<section class="particle-hero" aria-labelledby="hero-title">
+    <div class="particle-hero-inner">
+      <div class="particle-hero-copy">
+        <p class="particle-hero-name">Ousmane Coulibaly</p>
+        <h1 id="hero-title">Comprendre la donnée.<br>Construire des<br><span>produits utiles.</span></h1>
+        <p class="particle-hero-role">Data Scientist &amp; Développeur Full-Stack</p>
+        <p class="particle-hero-description">De l’analyse des données à la création d’applications,<br class="hero-desktop-break"> je transforme les idées en solutions concrètes.</p>
+        <div class="particle-hero-actions">
+          <a class="particle-hero-primary" href="#projets">Découvrir mes projets <span aria-hidden="true">↗</span></a>
+          <a class="particle-hero-secondary" href="#contact">Échanger avec moi <span aria-hidden="true">↗</span></a>
         </div>
       </div>
+      <div class="particle-hero-art" data-particle-art>
+        <span class="particle-hero-fallback" aria-hidden="true">OC</span>
+        <canvas class="particle-hero-canvas" aria-hidden="true"></canvas>
+        <button class="particle-hero-pause" type="button" aria-pressed="false" hidden>Mettre l’animation en pause</button>
+      </div>
+    </div>
+    <a class="particle-hero-scroll" href="#profil">Défiler <span aria-hidden="true">↓</span></a>
+  </section>
+  <section class="approach-section" id="profil" aria-labelledby="about-title">
+    <div class="approach-inner">
+      <header class="approach-heading">
+        <p class="approach-eyebrow">Une approche transversale</p>
+        <h2 id="about-title">Faire le lien entre<br>la donnée et <span>le terrain.</span></h2>
+      </header>
+      <div class="approach-grid">
+        <div class="approach-copy">
+          <p class="approach-lead" data-approach-reveal>Je suis Ousmane Alou Coulibaly. J’associe le développement logiciel à la Data Science et au MLOps pour donner une forme utile aux idées.</p>
+          <p data-approach-reveal>Mon parcours en génie logiciel m’a appris à relier les besoins des utilisateurs aux choix techniques. Du premier échange à l’application, j’accorde de l’importance à la clarté, à la fiabilité et à ce que le produit apporte réellement.</p>
+          <p data-approach-reveal>Pour une équipe qui recrute comme pour un client qui porte un projet, mon point de départ reste le même : comprendre le problème avant de construire la solution.</p>
+          <div class="approach-links">
+            <a class="approach-primary-link" href="/parcours/">Découvrir mon parcours <span aria-hidden="true">↗</span></a>
+            <a href="/assets/documents/CV_Ousmane_Coulibaly.pdf" download>Télécharger mon CV <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <aside class="approach-art" aria-label="Monogramme OC interactif">
+          <oc-monogram finish="silver" color="#82cbea" motion="float" role="group" aria-label="Monogramme OC interactif en trois dimensions">
+            <img src="/assets/oc3d/oc-poster.png" alt="Monogramme OC" width="880" height="492" loading="lazy">
+          </oc-monogram>
+        </aside>
+      </div>
+      <a class="approach-next" href="#projets">Découvrir mes réalisations <span aria-hidden="true">↓</span></a>
     </div>
   </section>
+  <section class="projects-section wrap section-space" id="projets" aria-labelledby="projects-title"><div class="section-heading"><p class="eyebrow">01 / PROJETS CHOISIS</p><p class="section-side-note">Des idées ancrées<br>dans des besoins concrets.</p></div><div class="section-title-row"><h2 id="projects-title">Du besoin<br>au <span class="serif-word">produit.</span></h2><p>${projects.length ? `${String(projects.length).padStart(2,'0')} projets à découvrir` : 'De nouveaux projets à venir'}</p></div><div class="project-grid">${projects.map(projectCard).join('')}</div></section>
+
+
 
   <section class="expertise-section wrap section-space" id="expertises" aria-labelledby="expertise-title"><div class="section-heading"><p class="eyebrow">03 / DOMAINES D’INTERVENTION</p><p class="section-side-note">Un regard sur la technique.<br>Un autre sur l’usage.</p></div><h2 id="expertise-title">La donnée rencontre<br>le <span class="serif-word">développement.</span></h2><div class="expertise-list">
     <article class="expertise"><span class="expertise-number">01</span><h3>Data Science</h3><div><p>Explorer les données, faire émerger des questions utiles et évaluer les modèles avec méthode.</p><ul class="tags"><li>Python</li><li>Analyse</li><li>Machine learning</li></ul></div><span class="expertise-symbol" aria-hidden="true">✳</span></article>

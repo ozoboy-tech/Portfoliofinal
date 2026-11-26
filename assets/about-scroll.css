@@ -1,137 +1,128 @@
-/* Présentation : lecture progressive et monogramme OC interactif. */
-.about-scroll {
-    --about-dim: rgba(223, 217, 216, .28);
-    --about-lit: var(--text);
-    --about-flash: var(--accent);
+/* Étape 2 : présentation entre l'accueil et les réalisations. */
+.home-page #contenu > #profil {
+  --text: #f2f5ff;
+  --muted: #b9c4d9;
+  --accent: #67d9f2;
+  --line: #314361;
+  color: var(--text);
+  background: radial-gradient(ellipse at 76% 53%, #0b1b36 0%, #06071a 57%);
+  padding: clamp(72px, 9vw, 144px) clamp(24px, 6.5vw, 116px) 56px;
+  scroll-margin-top: 24px;
 }
-
-.about-scroll-stage {
-    min-height: var(--about-viewport, 100svh);
-    padding-block: clamp(2.5rem, 6vh, 5rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.approach-inner { max-width: 1280px; margin-inline: auto; }
+.approach-heading { text-align: center; max-width: 880px; margin: 0 auto 64px; }
+.approach-eyebrow {
+  color: #95a7c5;
+  margin-bottom: 24px;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
 }
-
-.about-scroll .section-heading {
-    margin-bottom: clamp(1.5rem, 4vh, 3rem);
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+#profil .approach-heading h2 {
+  font-family: var(--body);
+  font-size: clamp(32px, 4.5vw, 64px);
+  font-weight: 800;
+  line-height: 1.13;
+  letter-spacing: -.045em;
 }
-
-.about-scroll-body {
-    display: flow-root;
+.approach-heading h2 span {
+  color: #70c7fa;
+  background: linear-gradient(105deg, #55dbe7, #6ca5ff 55%, #ad87f5);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
-.about-scroll-text {
-    font-family: var(--display);
-    font-size: clamp(1.7rem, 3vw, 3.4rem);
-    font-weight: 500;
-    line-height: 1.25;
-    letter-spacing: -.035em;
-    color: var(--text);
+.approach-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 88px);
 }
-
-.about-3d-space {
-    display: block;
-    float: right;
-    width: 28%;
-    min-width: 240px;
-    max-width: 340px;
-    margin: .15em 0 .5em clamp(1.5rem, 3vw, 3rem);
+.approach-copy p {
+  color: var(--muted);
+  font-size: clamp(16px, 1.35vw, 20px);
+  line-height: 1.85;
+  margin: 0 0 24px;
 }
-
-.about-3d-space oc-monogram {
-    display: block;
-    width: 100%;
-    height: 310px;
+.approach-copy .approach-lead {
+  color: #edf2ff;
+  font-size: clamp(20px, 1.9vw, 27px);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: -.025em;
 }
-
-.about-3d-space oc-monogram > img {
-    width: 86%;
-    margin: 3rem auto;
+.approach-art {
+  position: relative;
+  min-width: 0;
+  background: radial-gradient(ellipse at 50% 44%, #10324b7a, transparent 65%);
 }
-
-.about-word {
-    display: inline-block;
-    white-space: nowrap;
+.approach-art oc-monogram { display: block; height: clamp(310px, 33vw, 450px); width: 100%; }
+.approach-art oc-monogram > img { width: 86%; margin: 36px auto; }
+.approach-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  padding-top: 12px;
 }
-
-.about-char {
-    color: var(--about-lit);
-    transition: color .2s linear;
+.approach-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #c3cfe4;
 }
-
-.about-scroll-track.is-animated .about-char {
-    color: var(--about-dim);
+.approach-links .approach-primary-link {
+  color: #f0f6ff;
+  padding: 10px 20px;
+  border: 1px solid #3a5e82;
+  border-radius: 999px;
 }
-
-.about-scroll-track.is-animated .about-char.is-lit {
-    animation: about-letter-wave .4s ease both;
+.approach-links a:hover, .approach-next:hover { color: #67d9f2; }
+.approach-links a:focus-visible, .approach-next:focus-visible {
+  outline: 2px solid #67d9f2;
+  outline-offset: 5px;
 }
-
-.about-scroll-track.is-pinned {
-    height: calc(var(--about-viewport, 100svh) * 2.35);
+.approach-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 48px;
+  gap: 16px;
+  margin: 56px auto 0;
+  color: #adbbd2;
+  font-size: 13px;
 }
-
-.about-scroll-track.is-pinned .about-scroll-stage {
-    position: sticky;
-    top: 0;
+.approach-reveal {
+  opacity: .68;
+  transform: translateY(12px);
+  transition: opacity .65s ease, transform .65s ease;
 }
-
-@keyframes about-letter-wave {
-    0% {
-        color: var(--about-dim);
-        animation-timing-function: cubic-bezier(.22, 1, .36, 1);
-    }
-    30% {
-        color: var(--about-flash);
-        animation-timing-function: cubic-bezier(.55, 0, 1, .45);
-    }
-    100% { color: var(--about-lit); }
-}
-
+.approach-reveal.is-visible { opacity: 1; transform: none; }
 @media (max-width: 760px) {
-    .about-3d-space {
-        float: none;
-        width: min(100%, 300px);
-        min-width: 0;
-        margin: 0 auto 1.2rem;
-    }
-
-    .about-3d-space oc-monogram {
-        height: 280px;
-    }
-
-    .about-scroll-text {
-        font-size: clamp(1.55rem, 5.2vw, 2.2rem);
-    }
+  .home-page #contenu > #profil { padding: 64px 24px 32px; }
+  .approach-heading { margin-bottom: 36px; }
+  .approach-eyebrow { font-size: 10px; letter-spacing: .15em; margin-bottom: 20px; }
+  .approach-grid { grid-template-columns: 1fr; gap: 24px; }
+  .approach-art { width: 100%; max-width: 420px; margin-inline: auto; }
+  .approach-art oc-monogram { height: 320px; }
+  .approach-next { margin-top: 24px; }
 }
-
-html[data-motion="reduced"] .about-char {
-    color: var(--about-lit) !important;
-    animation: none !important;
+html[data-motion="reduced"] .approach-reveal {
+  opacity: 1; transform: none; transition: none;
 }
-
 @media (prefers-reduced-motion: reduce) {
-    .about-char {
-        color: var(--about-lit) !important;
-        animation: none !important;
-    }
+  .approach-reveal { opacity: 1; transform: none; transition: none; }
 }
-
 @media print {
-    .about-scroll-track.is-pinned { height: auto; }
-    .about-scroll-track .about-scroll-stage {
-        position: static;
-        min-height: 0;
-        padding-block: 1.5rem;
-    }
-    .about-3d-space { display: none; }
-    .about-scroll-text { font-size: 14pt; }
-    .about-char {
-        color: #111 !important;
-        animation: none !important;
-    }
+  .home-page #contenu > #profil { background: white; color: black; padding: 24px; }
+  .approach-heading h2 span { background: none; -webkit-text-fill-color: currentColor; color: black; }
+  .approach-grid { display: block; }
+  .approach-copy p, .approach-copy .approach-lead, .approach-eyebrow, .approach-links a { color: black; }
+  .approach-reveal { opacity: 1; transform: none; }
+  .approach-art, .approach-next { display: none; }
 }

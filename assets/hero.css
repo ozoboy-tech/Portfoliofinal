@@ -1,0 +1,75 @@
+/* Hero validé — les styles sont limités à l’accueil et à sa navigation. */
+.home-page { background: #06071a; }
+.home-page .site-header {
+  color: #f5f6ff; background: #06071a; min-height: 92px;
+  width: 100%; padding-inline: clamp(24px, 5.5vw, 100px); gap: 28px;
+}
+.home-page .hero-brand-mark { font: 700 34px/1 var(--display); letter-spacing: -.08em; }
+.home-page .header-nav { margin-inline: auto; gap: clamp(20px, 3.5vw, 60px); }
+.home-page .header-nav a { position: relative; font-size: 14px; }
+.home-page .header-nav [aria-current]::after {
+  content: ""; position: absolute; bottom: 0; left: 20%; right: 20%; height: 2px; background: #05d4e8;
+}
+.home-page .header-contact { font-size: 14px; white-space: nowrap; border: 0; padding: 0; margin-left: 0; }
+.home-page .header-contact:hover { background: transparent; color: #68e4f2; }
+.home-page .site-header { border-bottom: 0; }
+.home-page .site-footer { background: var(--bg); }
+.home-page .menu-open:not([hidden]) { display: inline-flex; color: #f5f6ff; }
+.home-page .menu-open > span:first-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.home-page .menu-dialog { background: #0b1026; color: #f5f6ff; border-color: #27334e; --accent: #37d9ee; }
+.home-page .menu-dialog::backdrop { background: #020415d9; backdrop-filter: blur(14px); }
+.home-page .site-intro { --bg: #06071a; --panel: #0b1537; --accent: #37d9ee; --text: #f5f6ff; }
+html.intro-ready .home-page .site-intro { background: #06071a; color: #f5f6ff; --ink: #f5f6ff; }
+.home-page #contenu > :not(.particle-hero) { background-color: var(--bg); }
+.particle-hero {
+  position: relative; overflow: hidden; isolation: isolate; color: #f5f6ff;
+  background: radial-gradient(ellipse at 79% 45%, #0b2048 0%, #080f29 32%, #06071a 67%);
+  min-height: calc(100svh - 92px); padding: 40px clamp(24px, 6.5vw, 116px) 88px;
+  display: flex; align-items: center;
+}
+.particle-hero-inner { width: 100%; max-width: 1600px; margin: auto; display: grid; grid-template-columns: 1.12fr 1fr; align-items: center; gap: 0; }
+.particle-hero-copy { position: relative; z-index: 2; }
+.particle-hero-name { margin: 0 0 24px; color: #b5b8c9; text-transform: uppercase; letter-spacing: .2em; font-size: 13px; font-weight: 700; }
+.particle-hero h1 { margin: 0; font-family: var(--body); font-weight: 800; font-size: clamp(32px, 3.6vw, 66px); letter-spacing: -.045em; line-height: 1.16; }
+.particle-hero h1 span { color: #52c6fa; background: linear-gradient(100deg,#00d9e9,#4178ff 52%,#ad6af5); background-clip: text; -webkit-text-fill-color: transparent; }
+.particle-hero-role { margin: 24px 0; color: #c0c3d0; font-size: clamp(16px, 1.5vw, 24px); line-height: 1.5; }
+.particle-hero-description { color: #b8bdce; font-size: clamp(14px, 1.24vw, 19px); line-height: 1.65; margin: 0; }
+.particle-hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px 28px; margin-top: 32px; font-size: 14px; font-weight: 700; }
+.particle-hero-primary { display: inline-flex; align-items: center; gap: 10px; padding: 16px 24px; border-radius: 999px; background: linear-gradient(110deg,#234fff,#007dba); color: white; text-decoration: none; transition: box-shadow .2s; }
+.particle-hero-primary:hover { box-shadow: 0 0 24px #137fff66; }
+.particle-hero-secondary { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; text-decoration: none; }
+.particle-hero-secondary:hover { color: #68e4f2; }
+.particle-hero a:focus-visible, .particle-hero button:focus-visible { outline: 2px solid #68e4f2; outline-offset: 6px; }
+.particle-hero-art { position: relative; width: 112%; margin-left: -4%; aspect-ratio: 1.1; min-width: 0; }
+.particle-hero-canvas { display: block; width: 100%; height: 100%; position: absolute; inset: 0; opacity: 0; }
+.particle-hero-art.is-ready .particle-hero-canvas { opacity: 1; }
+.particle-hero-fallback { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: clamp(130px,23vw,360px); letter-spacing: -.12em; color: #3ccfe8; text-shadow: 0 0 48px #006d9a80; }
+.particle-hero-art.is-ready .particle-hero-fallback { visibility: hidden; }
+.particle-hero-pause { position: absolute; bottom: 0; right: 10%; color: #aab4cc; background: #060b20; border: 1px solid #263b58; padding: 8px 12px; border-radius: 99px; font: inherit; font-size: 11px; min-height: 44px; cursor: pointer; }
+.particle-hero-scroll { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: grid; justify-items: center; gap: 4px; font-size: 12px; color: #b5b8c9; text-decoration: none; }
+.particle-hero-scroll span { font-size: 24px; }
+@media (max-width: 1000px) {
+  .home-page .site-header { gap: 16px; }
+  .home-page .header-nav { gap: 18px; }
+  .particle-hero { padding-inline: 5vw; }
+  .particle-hero-inner { grid-template-columns: 1.2fr 1fr; }
+  .hero-desktop-break { display: none; }
+}
+@media (max-width: 700px) {
+  .home-page .site-header { min-height: 76px; padding-inline: 24px; }
+  .home-page .site-header { flex-wrap: wrap; }
+  .home-page .header-nav { order: 4; flex-basis: 100%; justify-content: center; gap: 18px; }
+  html.enhanced .home-page .header-nav { display: none; }
+  .home-page .header-contact { margin-left: auto; }
+  .particle-hero { min-height: calc(100svh - 76px); padding: 40px 24px 76px; align-items: start; }
+  .particle-hero-inner { grid-template-columns: 1fr; }
+  .particle-hero h1 { font-size: clamp(29px, 7.5vw, 48px); }
+  .particle-hero-name { font-size: 11px; margin-bottom: 20px; }
+  .particle-hero-role { font-size: 16px; margin-block: 20px; }
+  .particle-hero-actions { gap: 10px 20px; margin-top: 24px; }
+  .particle-hero-primary { padding: 14px 20px; }
+  .particle-hero-art { width: 100%; max-width: 440px; margin: 12px auto 0; aspect-ratio: 1.4; }
+  .particle-hero-pause { right: 0; bottom: -8px; font-size: 10px; }
+  .particle-hero-fallback { font-size: 180px; }
+}
+@media (prefers-reduced-motion: reduce) { .particle-hero * { transition: none; } }

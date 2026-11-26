@@ -56,8 +56,8 @@ async function copyTree(source,destination,assets=false) {
 }
 function publicContentSecurityPolicy(pages) {
   const hashes = new Set();
-  for(const html of pages.values()) for(const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) hashes.add(`'sha256-${createHash('sha256').update(match[1]).digest('base64')}'`);
-  return `default-src 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; script-src 'self' ${[...hashes].join(' ')}; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action https://formspree.io; upgrade-insecure-requests`;
+  for(const html of pages.values()) for(const match of html.matchAll(/<script type="(?:application\/ld\+json|importmap)">([\s\S]*?)<\/script>/g)) hashes.add(`'sha256-${createHash('sha256').update(match[1]).digest('base64')}'`);
+  return `default-src 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; script-src 'self' https://cdn.jsdelivr.net ${[...hashes].join(' ')}; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; form-action https://formspree.io; upgrade-insecure-requests`;
 }
 export function securityHeaders(pages,noindex=false) {
   const publicCSP = publicContentSecurityPolicy(pages);

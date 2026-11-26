@@ -83,7 +83,7 @@ ${noindex ? '<meta name="robots" content="noindex, nofollow">' : ''}
   ${home ? '<script src="/assets/intro-init.js?v=2"></script>' : ''}
   <link rel="stylesheet" href="/assets/styles.css?v=20260927-4">
   ${home ? '<link rel="stylesheet" href="/assets/about-scroll.css?v=3">' : ''}
-  ${home ? '<link rel="stylesheet" href="/assets/hero.css?v=1"><link rel="stylesheet" href="/assets/projects-showcase.css?v=1"><script src="/assets/hero-particles.js?v=1" defer></script><script src="/assets/projects-showcase.js?v=1" defer></script>' : ''}
+  ${home ? '<link rel="stylesheet" href="/assets/hero.css?v=2"><link rel="stylesheet" href="/assets/projects-showcase.css?v=1"><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script><script type="module" src="/assets/hero-particles.js?v=3"></script><script src="/assets/projects-showcase.js?v=1" defer></script>' : ''}
   <link rel="stylesheet" href="/assets/portfolio.css?v=1">
   <script type="application/ld+json">${jsonForHTML(data)}</script>
   <script src="/assets/scripts.js?v=2" defer></script>
@@ -153,7 +153,7 @@ export function homepage(site, projects, noindex) {
         </div>
       </div>
       <div class="particle-hero-art" data-particle-art>
-        <span class="particle-hero-fallback" aria-hidden="true">OC</span>
+        <img class="particle-hero-fallback" src="/assets/images/oc-particles-reference.png" width="784" height="567" alt="" aria-hidden="true">
         <canvas class="particle-hero-canvas" aria-hidden="true"></canvas>
         <button class="particle-hero-pause" type="button" aria-pressed="false" hidden>Mettre l’animation en pause</button>
       </div>

@@ -20,12 +20,39 @@
 .home-page .menu-dialog::backdrop { background: #020415d9; backdrop-filter: blur(14px); }
 .home-page .site-intro { --bg: #06071a; --panel: #0b1537; --accent: #37d9ee; --text: #f5f6ff; }
 html.intro-ready .home-page .site-intro { background: #06071a; color: #f5f6ff; --ink: #f5f6ff; }
-.home-page #contenu > :not(.particle-hero) { background-color: #000; }
+.home-page #contenu > * { background-color: #000; }
 .particle-hero {
   position: relative; overflow: hidden; isolation: isolate; color: #f5f6ff;
   background: #000;  
   min-height: calc(100svh - 92px); padding: 40px clamp(24px, 6.5vw, 116px) 88px;
   display: flex; align-items: center;
+  @media (max-width: 1000px) {
+      .home-page .site-header {
+        gap: 16px;
+      }
+      .home-page .header-nav {
+        gap: 18px;
+      }
+    }
+    @media (max-width: 700px) {
+      .home-page .site-header {
+        min-height: 76px;
+        padding-inline: 24px;
+        flex-wrap: wrap;
+      }
+      .home-page .header-nav {
+        order: 4;
+        flex-basis: 100%;
+        justify-content: center;
+        gap: 18px;
+      }
+      .home-page .header-contact {
+        margin-left: auto;
+      }
+      .home-page #contenu > * {
+        background-color: #000;
+      }
+    }
 }
 .particle-hero-inner { width: 100%; max-width: 1000px; margin: auto; }
 .particle-hero-copy { position: relative; z-index: 2; }

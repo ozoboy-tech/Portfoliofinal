@@ -77,14 +77,14 @@ function header(path, site) {
 
     <div id="haut"></div>
 
-    <header class="site-header wrap">
+    <header class="site-header wrap portox-header">
       <a
         class="brand"
         href="/"
         aria-label="Ousmane Coulibaly — Accueil"
       >
         <span class="hero-brand-mark" aria-hidden="true">
-          Ousmane
+          OC
         </span>
       </a>
 
@@ -93,7 +93,7 @@ function header(path, site) {
       </nav>
 
       <a class="header-contact" href="${contactHref}">
-        Contact
+        Parlons-en
         ${arrow}
       </a>
 
@@ -110,7 +110,7 @@ function header(path, site) {
     </header>
 
     <dialog
-      class="menu-dialog"
+      class="menu-dialog portox-menu"
       id="menu-dialog"
       aria-label="Menu du portfolio"
     >
@@ -169,30 +169,54 @@ function header(path, site) {
 
 function footer(site) {
   return `
-    <footer class="site-footer wrap">
-      <div class="footer-bottom">
-        <small>
-          © ${new Date().getFullYear()} ${e(site.name)}
-        </small>
+    <footer class="site-footer signature-footer">
+      <div class="signature-footer-inner">
+        <div class="signature-footer-top">
+          <div class="signature-footer-identity">
+            <p class="signature-footer-name">${e(site.name)}</p>
+            <p>Développeur &amp; Data Engineer</p>
+            <p>Basé au Mali</p>
+          </div>
 
-        <nav aria-label="Liens utiles">
-          <a href="/parcours/">Parcours &amp; CV</a>
-          <a href="/confidentialite/">Confidentialité</a>
-          <a href="/admin/">Administration</a>
-        </nav>
+          <nav class="signature-footer-column" aria-label="Explorer le portfolio">
+            <p class="signature-footer-label">Explorer</p>
+            <a href="/projets/">Projets</a>
+            <a href="/parcours/">Parcours &amp; CV</a>
+            <a href="/#expertises">Expertises</a>
+          </nav>
 
-        <button
-          class="motion-toggle"
-          type="button"
-          aria-pressed="false"
-          hidden
-        >
-          Réduire les animations
-        </button>
+          <div class="signature-footer-column">
+            <p class="signature-footer-label">Contact</p>
+            <a href="/#contact">M’écrire <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/ozoboy-tech">
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
 
-        <a class="back-top" href="#haut">
-          Haut de page ↑
-        </a>
+        <p class="signature-footer-word" aria-hidden="true">Ousmane</p>
+
+        <div class="signature-footer-bottom">
+          <small>&copy; ${new Date().getFullYear()} ${e(site.name)}</small>
+
+          <nav aria-label="Liens pratiques">
+            <a href="/confidentialite/">Confidentialité</a>
+            <a href="/admin/">Administration</a>
+          </nav>
+
+          <button
+            class="motion-toggle"
+            type="button"
+            aria-pressed="false"
+            hidden
+          >
+            Réduire les animations
+          </button>
+
+          <a class="signature-footer-back" href="#haut">
+            Haut de page <span aria-hidden="true">↑</span>
+          </a>
+        </div>
       </div>
     </footer>
   `;
@@ -245,15 +269,23 @@ export function page({
     ? `
       <link
         rel="stylesheet"
-        href="/assets/about-scroll.css?v=3"
+               href="/assets/about-scroll.css?v=4"
       >
       <link
         rel="stylesheet"
         href="/assets/hero.css?v=3"
       >
-      <link
+       <link
         rel="stylesheet"
-        href="/assets/projects-showcase.css?v=1"
+        href="/assets/hero-portrait.css?v=1"
+      >
+            <link
+        rel="stylesheet"
+        href="/assets/projects-phones.css?v=1"
+      >
+            <link
+        rel="stylesheet"
+        href="/assets/expertises.css?v=1"
       >
     `
     : '';
@@ -336,9 +368,15 @@ export function page({
       rel="stylesheet"
       href="/assets/portfolio.css?v=1"
     >
+          <link
+      rel="stylesheet"
+      href="/assets/navigation.css?v=1"
+    >
 
     <script type="application/ld+json">${jsonForHTML(data)}</script>
     <script src="/assets/scripts.js?v=2" defer></script>
+        ${home ? '<script src="/assets/presentation.js?v=1" defer></script>' : ''}
+            ${home ? '<script src="/assets/projects-phones.js?v=1" defer></script>' : ''}
   </head>
 
   <body${home ? ' class="home-page"' : ''}>
@@ -414,45 +452,57 @@ export function projectCard(project, index) {
   `;
 }
 
-function showcaseCard(project) {
-  const image =
-    project.image || '/assets/images/project-default.svg';
-
-  const imageAlt =
-    project.imageAlt || 'Illustration du projet';
-
-  const imageCaption =
-    project.imageCaption || 'Illustration du projet';
+function showcaseCard(project, index) {
+  const image = project.image || '/assets/images/project-default.svg';
 
   return `
-    <article class="showcase-card" data-showcase-card>
+    <article
+      class="phone-project"
+      data-phone-project
+      data-title="${e(project.title)}"
+    >
       <a
-        class="showcase-card-link"
+        class="phone-device"
         href="/projets/${e(project.slug)}/"
-        aria-label="Découvrir le projet ${e(project.title)}"
+        aria-labelledby="phone-title-${e(project.slug)}"
       >
-        <div class="showcase-card-media">
-          <img
-            src="${e(image)}"
-            width="1200"
-            height="800"
-            loading="lazy"
-            decoding="async"
-            alt="${e(imageAlt)}"
-          >
-        </div>
-
-        <div class="showcase-card-caption">
-          <span>${e(imageCaption)}</span>
-        </div>
-
-        <div class="showcase-card-details">
-          <div>
-            <h3>${e(project.title)}</h3>
-            <p>${e(statuses[project.status])}</p>
+        <div class="phone-screen">
+          <div class="phone-screen-bar" aria-hidden="true">
+            <span>OC</span>
+            <span>PORTFOLIO</span>
           </div>
 
-          <span aria-hidden="true">↗</span>
+          <p class="phone-project-category">
+            ${String(index + 1).padStart(2, '0')} / ${e(project.category)}
+          </p>
+
+          <h3 id="phone-title-${e(project.slug)}">
+            ${e(project.title)}
+          </h3>
+
+          <div class="phone-project-image">
+            <img
+              src="${e(image)}"
+              width="1200"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              alt="${e(project.imageAlt || 'Illustration du projet')}"
+            >
+          </div>
+
+          <p class="phone-project-summary">
+            ${e(project.summary)}
+          </p>
+
+          <p class="phone-project-status">
+            ${e(statuses[project.status])}
+          </p>
+
+          <span class="phone-project-open">
+            Découvrir le projet
+            <span aria-hidden="true">&#8599;</span>
+          </span>
         </div>
       </a>
     </article>
@@ -620,234 +670,187 @@ function contact(site) {
 }
 
 export function homepage(site, projects, noindex) {
-  const featured =
-    projects.find(project => project.title === 'PharmaGuard') ||
-    projects[0];
-
-  const featuredLink = featured
-    ? `/projets/${e(featured.slug)}/`
-    : '#contact';
-
-  const featuredImage =
-    featured?.image || '/assets/images/project-default.svg';
-
-  const projectCards = featured
-    ? [
-        featured,
-        ...projects.filter(project => project !== featured),
-      ]
-    : [];
-
-  const featuredContent = featured
-    ? `
-      <div class="showcase-feature">
-        <div class="showcase-feature-copy">
-          <span class="showcase-rule" aria-hidden="true"></span>
-
-          <h3>${e(featured.title)}</h3>
-
-          <p class="showcase-meta">
-            ${e(featured.category)} · ${e(statuses[featured.status])}
-          </p>
-
-          <p class="showcase-summary">
-            ${e(featured.summary)}
-          </p>
-
-          <a class="showcase-feature-link" href="${featuredLink}">
-            Explorer le projet
-            ${arrow}
-          </a>
-        </div>
-
-        <figure class="showcase-feature-figure" data-feature-figure>
-          <div class="showcase-feature-frame" data-feature-frame>
-            <img
-              src="${e(featuredImage)}"
-              width="1200"
-              height="800"
-              decoding="async"
-              alt="${e(featured.imageAlt || 'Illustration du projet')}"
-            >
-          </div>
-
-          <figcaption>
-            ${e(featured.imageCaption || 'Illustration du projet')}
-          </figcaption>
-        </figure>
-      </div>
-    `
-    : '<p>De nouveaux projets à venir.</p>';
-
-  const gallery = projectCards.length
-    ? `
-      <div class="showcase-gallery-heading">
-        <p>
-          <a href="/projets/">Tous les projets ↗</a>
-          <span>
-            · ${String(projectCards.length).padStart(2, '0')}
-          </span>
-        </p>
-
-        <div
-          class="showcase-controls"
-          data-gallery-controls
-          hidden
-        >
-          <button
-            type="button"
-            data-gallery-prev
-            aria-label="Projet précédent"
-          >
-            ←
-          </button>
-
-          <button
-            type="button"
-            data-gallery-next
-            aria-label="Projet suivant"
-          >
-            →
-          </button>
-        </div>
-      </div>
-
-      <div
-        class="showcase-gallery"
-        data-gallery
-        aria-label="Galerie des projets"
-      >
-        ${projectCards.map(showcaseCard).join('\n')}
-      </div>
-    `
-    : '';
+  const projectPhones = projects.map(showcaseCard).join('\n');
+  
 
   const body = `
-    <section class="particle-hero" aria-labelledby="hero-title">
-      <div class="particle-hero-inner">
-        <div class="particle-hero-copy">
-          <p class="particle-hero-name">Ousmane Coulibaly</p>
-
-          <h1 id="hero-title">
-            Comprendre la donnée.
-            <br>
-            Construire des
-            <br>
-            <span>produits utiles.</span>
-          </h1>
-
-          <p class="particle-hero-role">
-            Data Scientist &amp; Développeur Full-Stack
-          </p>
-
-          <p class="particle-hero-description">
-            De l’analyse des données à la création d’applications,
-            <br class="hero-desktop-break">
-            je transforme les idées en solutions concrètes.
-          </p>
-
-          <div class="particle-hero-actions">
-            <a class="particle-hero-primary" href="#projets">
-              Découvrir mes projets
-              ${arrow}
-            </a>
-
-            <a class="particle-hero-secondary" href="#contact">
-              Échanger avec moi
-              ${arrow}
-            </a>
-          </div>
+    <section class="portrait-hero" aria-labelledby="hero-title">
+      <div class="portrait-hero-media">
+        <img
+          src="/assets/images/ousmane-hero.png"
+          width="1200"
+          height="1500"
+          alt="Portrait d’Ousmane Coulibaly, vêtu d’un sweat noir"
+          fetchpriority="high"
+          decoding="async"
+        >
         </div>
+
+        <div class="portrait-hero-copy">
+        <p class="portrait-hero-greeting">
+          Hey <span aria-hidden="true">👋</span> I’m Ousmane
+        </p>
+
+        <h1 id="hero-title">
+          Développeur
+          <span>&amp; Data Engineer</span>
+        </h1>
+
+        <a class="portrait-hero-button" href="#contact">
+          Travaillons ensemble
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
 
-      <a class="particle-hero-scroll" href="#profil">
-        Défiler
-        <span aria-hidden="true">↓</span>
-      </a>
-    </section>
+      <aside
+        class="portrait-hero-expertise"
+        aria-labelledby="hero-expertise-title"
+      >
+        <h2 id="hero-expertise-title">Mes outils</h2>
 
-    <section
-      class="approach-section"
+        <ul>
+          <li>Python</li>
+          <li>SQL</li>
+          <li>React</li>
+          <li>FastAPI</li>
+        </ul>
+      </aside>
+
+      <div class="portrait-hero-footer">
+        <p class="portrait-hero-description">
+          Basé au Mali, je conçois des applications et des
+          solutions data adaptées aux besoins du terrain.
+        </p>
+
+        <dl class="portrait-hero-highlights">
+          <div>
+            <dt>Projets présentés</dt>
+            <dd>${String(projects.length).padStart(2, '0')}</dd>
+          </div>
+
+          <div>
+            <dt>Web &amp; applications</dt>
+            <dd>Full-Stack</dd>
+          </div>
+
+          <div>
+            <dt>Pipelines &amp; modèles</dt>
+            <dd>Data</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+        <section
+      class="portox-about"
       id="profil"
       aria-labelledby="about-title"
     >
-      <div class="approach-inner">
-        <header class="approach-heading">
-          <p class="approach-eyebrow">Une approche transversale</p>
+      <div class="portox-about-inner">
+        <div class="portox-about-label">
+          <p class="portox-about-status">
+            <span aria-hidden="true"></span>
+            Ouvert aux collaborations
+          </p>
 
-          <h2 id="about-title">
-            Faire le lien entre
-            <br>
-            la donnée et <span>le terrain.</span>
-          </h2>
-        </header>
-
-        <div class="approach-grid">
-          <div class="approach-copy">
-            <p class="approach-lead">
-              Je suis Ousmane Alou Coulibaly.
-              J’associe le développement logiciel à la Data Science
-              et au MLOps pour donner une forme utile aux idées.
-            </p>
-
-            <p>
-              Mon parcours en génie logiciel m’a appris à relier
-              les besoins des utilisateurs aux choix techniques.
-              Du premier échange à l’application, j’accorde de
-              l’importance à la clarté, à la fiabilité et à ce que
-              le produit apporte réellement.
-            </p>
-
-            <p>
-              Pour une équipe qui recrute comme pour un client
-              qui porte un projet, mon point de départ reste
-              le même : comprendre le problème avant de construire
-              la solution.
-            </p>
-
-            <div class="approach-links">
-              <a class="approach-primary-link" href="/parcours/">
-                Découvrir mon parcours
-                ${arrow}
-              </a>
-
-              <a
-                href="/assets/documents/CV_Ousmane_Coulibaly.pdf"
-                download
-              >
-                Télécharger mon CV
-                <span aria-hidden="true">↓</span>
-              </a>
-            </div>
-          </div>
+          <h2 id="about-title">Une approche transversale</h2>
         </div>
 
-        <a class="approach-next" href="#projets">
-          Découvrir mes réalisations
-          <span aria-hidden="true">↓</span>
-        </a>
+        <div class="portox-about-content">
+          <p class="portox-about-text" data-profile-text>
+            Je suis Ousmane Alou Coulibaly, développeur et Data Engineer
+            basé au Mali. Mon parcours en génie logiciel et en Data Science
+            me permet de relier le code, les données et les besoins du terrain.
+            Je conçois des applications et des solutions data avec une idée
+            simple : comprendre le problème, construire une solution fiable
+            et la rendre utile à ceux qui l’utilisent.
+          </p>
+
+          <div class="portox-about-links">
+            <a class="portox-about-primary" href="#projets">
+              Découvrir mes projets
+              <span aria-hidden="true">&#8599;</span>
+            </a>
+
+            <a class="portox-about-secondary" href="/parcours/">
+              Parcours &amp; CV
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
     <section
-      class="showcase-section"
+      class="phone-projects"
       id="projets"
       aria-labelledby="projects-title"
+      data-phone-showcase
     >
-      <div class="showcase-inner">
-        <div class="showcase-overline">
-          <p>Projets</p>
-          <p>Des idées ancrées dans des besoins concrets.</p>
+      <div class="phone-story" data-phone-story>
+        <div class="phone-projects-layout">
+          <div class="phone-projects-copy">
+            <p class="phone-projects-eyebrow">
+              Sélection de projets
+            </p>
+
+            <h2 id="projects-title">
+              Des idées.
+              <span>Des produits.</span>
+            </h2>
+
+            <p class="phone-projects-description">
+              Des applications pensées pour répondre à des besoins
+              concrets. Explore mes projets, leur conception
+              et les choix techniques qui les font avancer.
+            </p>
+
+            <a
+              class="phone-projects-link"
+              href="${projects[0] ? '/projets/' + e(projects[0].slug) + '/' : '#contact'}"
+              data-phone-link
+            >
+              Explorer un projet
+              <span aria-hidden="true">&#8599;</span>
+            </a>
+
+            <div
+              class="phone-projects-controls"
+              data-phone-controls
+              hidden
+            >
+              <button
+                type="button"
+                data-phone-prev
+                aria-label="Projet précédent"
+              >
+                &#8592;
+              </button>
+
+              <p
+                data-phone-counter
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                01 / ${String(projects.length).padStart(2, '0')}
+              </p>
+
+              <button
+                type="button"
+                data-phone-next
+                aria-label="Projet suivant"
+              >
+                &#8594;
+              </button>
+            </div>
+
+            <a class="phone-projects-all" href="/projets/">
+              Tous les projets
+            </a>
+          </div>
+
+          <div class="phone-projects-stack" data-phone-stack>
+            ${projectPhones || '<p>De nouveaux projets à venir.</p>'}
+          </div>
         </div>
-
-        <h2 id="projects-title" class="showcase-title">
-          Du besoin
-          <br>
-          <span>au produit.</span>
-        </h2>
-
-        ${featuredContent}
-        ${gallery}
       </div>
     </section>
 
@@ -869,103 +872,153 @@ function expertises(projects) {
     projects.find(project => project.slug === 'planora') ||
     projects[0];
 
+  const visuals = {
+    science: `
+      <div
+        class="expertise-visual expertise-visual--science"
+        aria-hidden="true"
+      >
+        <span class="expertise-orbit">
+          <span>DATA</span>
+        </span>
+      </div>
+    `,
+
+    engineering: `
+      <div
+        class="expertise-visual expertise-visual--pipeline"
+        aria-hidden="true"
+      >
+        <span>Collecter</span>
+        <i>&#8594;</i>
+        <span>Structurer</span>
+        <i>&#8594;</i>
+        <span>Exploiter</span>
+      </div>
+    `,
+
+    development: `
+      <div
+        class="expertise-visual expertise-visual--interface"
+        aria-hidden="true"
+      >
+        <div class="expertise-window-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="expertise-window-grid">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    `,
+  };
+
   const skills = [
     {
+      type: 'science',
       title: 'Data Science',
       text:
-        'Explorer les données, faire émerger des questions utiles ' +
-        'et évaluer les modèles avec méthode.',
-      tags: ['Python', 'Analyse', 'Machine learning'],
-      image: '/assets/images/signal.svg',
+        'Explorer les données, tester des hypothèses et construire ' +
+        'des modèles évalués avec méthode pour éclairer les décisions.',
+      tags: ['Python', 'Pandas', 'Machine learning'],
     },
     {
-      title: 'Ingénierie MLOps',
+      type: 'engineering',
+      title: 'Data Engineering',
       text:
-        'Relier l’expérimentation à des services reproductibles, ' +
-        'avec une attention portée aux tests et au déploiement.',
-      tags: ['Git', 'API', 'Tests et pipelines'],
-      image: '/assets/images/project-default.svg',
+        'Collecter et structurer les données, puis relier leur traitement ' +
+        'aux applications avec une attention portée à la fiabilité.',
+      tags: ['SQL', 'ETL', 'API', 'MLOps'],
     },
     {
+      type: 'development',
       title: 'Développement Full-Stack',
       text:
-        'Concevoir des interfaces et les relier à la logique métier, ' +
-        'aux données et aux besoins des utilisateurs.',
-      tags: [
-        'JavaScript · React',
-        'PHP · MySQL',
-        'HTML · CSS',
-      ],
-      image: app?.image || '/assets/images/project-default.svg',
+        'Transformer un besoin en application : une interface lisible, ' +
+        'une logique métier cohérente et des données bien organisées.',
+      tags: ['React', 'Next.js', 'FastAPI', 'MySQL'],
       project: app,
     },
   ];
 
-  const skillItems = skills
-    .map((skill, index) => {
-      const tags = skill.tags
-        .map(tag => `<li>${e(tag)}</li>`)
-        .join('\n');
+  const cards = skills.map((skill, index) => {
+    const tags = skill.tags
+      .map(tag => `<li>${e(tag)}</li>`)
+      .join('\n');
 
-      const projectLink = skill.project
-        ? `
-          <a
-            class="text-link"
-            href="/projets/${e(skill.project.slug)}/"
-          >
-            Explorer ${e(skill.project.title)}
-            ${arrow}
-          </a>
-        `
-        : '';
-
-      return `
-        <details
-          class="skill"
-          name="expertise"
-          ${index === 0 ? 'open' : ''}
+    const projectLink = skill.project
+      ? `
+        <a
+          class="expertise-project-link"
+          href="/projets/${e(skill.project.slug)}/"
         >
-          <summary>${e(skill.title)}</summary>
+          Explorer ${e(skill.project.title)}
+          <span aria-hidden="true">&#8599;</span>
+        </a>
+      `
+      : '';
 
-          <div class="skill-copy">
-            <p>${e(skill.text)}</p>
+    return `
+      <article class="expertise-card expertise-card--${skill.type}">
+        <p class="expertise-card-number">
+          ${String(index + 1).padStart(2, '0')}
+        </p>
 
-            <ul class="tags">
-              ${tags}
-            </ul>
+        <h3>${e(skill.title)}</h3>
 
-            ${projectLink}
-          </div>
+        <p class="expertise-card-description">
+          ${e(skill.text)}
+        </p>
 
-          <img
-            class="skill-image"
-            src="${e(skill.image)}"
-            alt=""
-            loading="lazy"
-            width="800"
-            height="520"
-          >
-        </details>
-      `;
-    })
-    .join('\n');
+        <ul class="expertise-tags" aria-label="Outils et méthodes">
+          ${tags}
+        </ul>
+
+        ${visuals[skill.type]}
+        ${projectLink}
+      </article>
+    `;
+  }).join('\n');
 
   return `
     <section
+      class="expertise-section"
       id="expertises"
-      class="skills wrap"
       aria-labelledby="skills-title"
     >
-      <header>
-        <p class="kicker">Savoir-faire</p>
+      <div class="expertise-inner">
+        <header class="expertise-heading">
+          <div>
+            <p class="expertise-eyebrow">Savoir-faire</p>
 
-        <h2 id="skills-title">
-          Mes <span class="spectrum">expertises.</span>
-        </h2>
-      </header>
+            <h2 id="skills-title">
+              Du code aux données.
+              <span>Une même exigence.</span>
+            </h2>
+          </div>
 
-      <div class="skill-list">
-        ${skillItems}
+          <p class="expertise-introduction">
+            Comprendre le besoin, organiser l’information et construire
+            des outils qui servent réellement leurs utilisateurs.
+          </p>
+        </header>
+
+        <div class="expertise-grid">
+          ${cards}
+        </div>
+
+        <div class="expertise-footer">
+          <p>Un projet à construire ou une équipe à rejoindre ?</p>
+
+          <a href="#contact">
+            Parlons-en
+            <span aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
       </div>
     </section>
   `;

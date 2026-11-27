@@ -58,7 +58,18 @@ for(const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) await checkLink(new
 assert(!sitemap.includes('/admin/'),'Administration présente dans le sitemap');
 assert(!files.some(p=>/\/(?:node_modules|content|src|tests|\.git)\//.test(portable(p))),'Sources privées dans dist');
 const home=pages.get(resolve(root,'index.html')).html;
-assert(/<form[^>]+action="https:\/\/formspree.io\/f\/[a-z0-9]+" method="POST"/.test(home),'Contact Formspree natif absent');
+const hasNativeContactForm = [
+  ...home.matchAll(/<form\b[^>]*>/g),
+].some(([form]) => {
+  const validAction =
+    /\saction="https:\/\/formspree.io\/f\/[a-z0-9]+"/.test(form);
+
+  const validMethod = /\smethod="POST"/i.test(form);
+
+  return validAction && validMethod;
+});
+
+assert(hasNativeContactForm, 'Contact Formspree natif absent');
 const js=await readFile(resolve(root,'assets/scripts.js'),'utf8');
 assert(!/Email\.send|smtpjs|setInterval|innerHTML\s*=|preventDefault\s*\(/.test(js),'Régression JavaScript public');
 console.log(JSON.stringify({htmlPages:pages.size,internalReferences:internalLinks,files:files.length,checks:'structure, liens, métadonnées, JSON-LD, CSP, images, formulaire, exclusions : OK'},null,2));

@@ -123,7 +123,7 @@
       if (outside && backdropStart && event.target === menu) menu.close();
       backdropStart = false;
     });
-    window.matchMedia('(min-width: 761px)').addEventListener('change', event => {
+    window.matchMedia('(min-width: 801px)').addEventListener('change', event => {
       if (event.matches && menu.open) menu.close();
     });
   }

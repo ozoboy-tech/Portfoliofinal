@@ -174,3 +174,138 @@ html:has(body.home-page) {
   .home-page .project-link:hover .project-arrow {
     transform: none !important;
   }
+
+  .site-footer.signature-footer {
+    padding: clamp(48px, 7vw, 100px) clamp(20px, 5vw, 80px) 20px;
+    border-top: 1px solid #26303d;
+    background: #000;
+    color: #f3f6fb;
+  }
+  
+  .signature-footer-inner {
+    max-width: 1440px;
+    margin-inline: auto;
+    container-type: inline-size;
+  }
+  
+  .signature-footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  
+  .signature-footer-identity p,
+  .signature-footer-label {
+    margin: 0;
+  }
+  
+  .signature-footer-identity {
+    color: #a9b4c4;
+    font-size: 0.94rem;
+    line-height: 1.65;
+  }
+  
+  .signature-footer-identity .signature-footer-name {
+    margin-bottom: 8px;
+    color: #f3f6fb;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  
+  .signature-footer-column {
+    display: grid;
+    justify-items: start;
+  }
+  
+  .signature-footer-label {
+    margin-bottom: 12px;
+    color: #83baff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  
+  .signature-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .signature-footer a:hover {
+    color: #83baff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  
+  .signature-footer :is(a, button):focus-visible {
+    outline: 2px solid #83baff;
+    outline-offset: 4px;
+  }
+  
+  .signature-footer-word {
+    margin: clamp(40px, 7vw, 100px) 0 clamp(24px, 4vw, 52px);
+    color: #f3f6fb;
+    font-family: var(--body), sans-serif;
+    font-size: 23vw;
+    font-size: 24cqi;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.065em;
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .signature-footer-bottom,
+  .signature-footer-bottom nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 22px;
+  }
+  
+  .signature-footer-bottom {
+    padding-top: 14px;
+    border-top: 1px solid #26303d;
+    color: #acb7c7;
+    font-size: 0.8rem;
+  }
+  
+  .signature-footer-bottom small {
+    margin-right: auto;
+    font-size: inherit;
+  }
+  
+  .signature-footer-bottom .motion-toggle {
+    border-color: #344255;
+    border-radius: 8px;
+    color: inherit;
+  }
+  
+  .signature-footer-back span {
+    color: #83baff;
+  }
+  
+  @media (max-width: 680px) {
+    .signature-footer-top {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px 16px;
+    }
+  
+    .signature-footer-identity {
+      grid-column: 1 / -1;
+    }
+  
+    .signature-footer-bottom {
+      gap: 4px 16px;
+    }
+  
+    .signature-footer-bottom small {
+      flex-basis: 100%;
+      margin-bottom: 6px;
+    }
+  }

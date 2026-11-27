@@ -1,0 +1,319 @@
+/* Barre de navigation */
+
+.site-header.portox-header {
+    position: fixed;
+    top: 12px;
+    left: 20px;
+    z-index: 30;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 24px;
+    width: calc(100% - 40px);
+    max-width: none;
+    min-height: 76px;
+    margin: 0;
+    padding: 12px 24px;
+    border: 1px solid #202938;
+    border-radius: 999px;
+    color: #f5f7fb;
+    background: #090d14ed;
+    backdrop-filter: blur(20px);
+  }
+  
+  .site-header.portox-header .brand {
+    justify-self: start;
+    min-height: 44px;
+  }
+  
+  .site-header.portox-header .hero-brand-mark {
+    color: #f5f7fb;
+    font-family: var(--display);
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.12em;
+  }
+  
+  /* Liens en pastilles */
+  
+  .site-header.portox-header .header-nav {
+    display: flex;
+    order: 0;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    flex-wrap: nowrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+  
+  .site-header.portox-header .header-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: #111722;
+    background: #edf1f7;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+  
+  .site-header.portox-header .header-nav a::after {
+    content: none;
+  }
+  
+  .site-header.portox-header .header-nav a:hover {
+    color: #0b1424;
+    background: #d7e7ff;
+    transform: translateY(-2px);
+  }
+  
+  .site-header.portox-header .header-nav a[aria-current] {
+    color: #fff;
+    background: #1765ed;
+  }
+  
+  .site-header.portox-header .header-nav a[aria-current]:hover {
+    background: #2979ff;
+  }
+  
+  /* Bouton de contact */
+  
+  .site-header.portox-header .header-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: end;
+    gap: 14px;
+    min-height: 44px;
+    margin: 0;
+    padding: 10px 20px;
+    border: 1px solid #536078;
+    border-radius: 999px;
+    color: #f5f7fb;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      border-color 180ms ease,
+      background-color 180ms ease;
+  }
+  
+  .site-header.portox-header .header-contact:hover {
+    border-color: #69b7ff;
+    color: #fff;
+    background: #11233c;
+  }
+  
+  .site-header.portox-header .menu-open:not([hidden]) {
+    display: none;
+  }
+  
+  /* Navigation au clavier */
+  
+  .site-header.portox-header a:focus-visible,
+  .site-header.portox-header button:focus-visible,
+  .menu-dialog.portox-menu a:focus-visible,
+  .menu-dialog.portox-menu button:focus-visible {
+    outline: 2px solid #83beff;
+    outline-offset: 4px;
+  }
+  
+  /* Fenêtre du menu mobile */
+  
+  .menu-dialog.portox-menu {
+    position: fixed;
+    inset: 0;
+    width: calc(100% - 32px);
+    max-width: 560px;
+    height: auto;
+    max-height: calc(100dvh - 32px);
+    margin: auto;
+    padding: 24px;
+    overflow-y: auto;
+    border: 1px solid #29354a;
+    border-radius: 28px;
+    color: #f5f7fb;
+    background: #0a101b;
+  }
+  
+  .menu-dialog.portox-menu[open] {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  
+  .menu-dialog.portox-menu::backdrop {
+    background: #02050bc9;
+    backdrop-filter: blur(12px);
+  }
+  
+  .menu-dialog.portox-menu .menu-top {
+    gap: 16px;
+  }
+  
+  .menu-dialog.portox-menu .menu-top .hero-brand-mark {
+    color: #f5f7fb;
+    font-size: 24px;
+  }
+  
+  .menu-dialog.portox-menu .menu-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 8px 16px;
+    border: 1px solid #34425a;
+    border-radius: 999px;
+    color: #f5f7fb;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  .menu-dialog.portox-menu .menu-close span {
+    margin: 0;
+    font-size: 20px;
+  }
+  
+  .menu-dialog.portox-menu .menu-layout {
+    display: block;
+    flex: initial;
+  }
+  
+  .menu-dialog.portox-menu .menu-invite {
+    display: none;
+  }
+  
+  .menu-dialog.portox-menu nav {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    text-align: left;
+  }
+  
+  .menu-dialog.portox-menu nav a {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    color: #111722;
+    background: #edf1f7;
+    font-family: var(--body);
+    font-size: clamp(20px, 5vw, 28px);
+    font-weight: 650;
+    line-height: 1.3;
+    letter-spacing: -0.03em;
+  }
+  
+  .menu-dialog.portox-menu nav a:hover {
+    color: #111722;
+    background: #d7e7ff;
+  }
+  
+  .menu-dialog.portox-menu nav a[aria-current] {
+    color: #fff;
+    background: #1765ed;
+  }
+  
+  .menu-dialog.portox-menu .menu-foot {
+    justify-content: flex-start;
+    gap: 10px 20px;
+    color: #b6c3d7;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+  
+  /* Tablettes et téléphones */
+  
+  @media (max-width: 800px) {
+    .site-header.portox-header {
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 12px;
+      width: calc(100% - 24px);
+      min-height: 68px;
+      margin: 12px 12px 0;
+      padding: 10px 16px;
+    }
+  
+    .site-header.portox-header .hero-brand-mark {
+      font-size: 30px;
+    }
+  
+    .site-header.portox-header .header-contact {
+      gap: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+    }
+  
+    .site-header.portox-header .header-nav {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      justify-self: stretch;
+      flex-wrap: wrap;
+    }
+  
+    .enhanced .site-header.portox-header .header-nav {
+      display: none;
+    }
+  
+    .site-header.portox-header .menu-open:not([hidden]) {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin: 0;
+      padding: 0;
+      border: 1px solid #34425a;
+      border-radius: 50%;
+      color: #f5f7fb;
+      background: #111b2a;
+      cursor: pointer;
+    }
+  
+    .site-header.portox-header .menu-lines {
+      width: 18px;
+      height: 8px;
+      border-block: 2px solid currentColor;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .site-header.portox-header .header-nav a,
+    .site-header.portox-header .header-contact {
+      transition: none;
+    }
+  
+    .site-header.portox-header .header-nav a:hover {
+      transform: none;
+    }
+  }
+
+  .site-header.portox-header ~ #contenu {
+    padding-top: 100px;
+  }
+  
+  @media (max-width: 800px) {
+    .site-header.portox-header ~ #contenu {
+      padding-top: 92px;
+    }
+  }

@@ -126,3 +126,193 @@ html[data-motion="reduced"] .approach-reveal {
   .approach-reveal { opacity: 1; transform: none; }
   .approach-art, .approach-next { display: none; }
 }
+
+/* Présentation inspirée de Portox */
+
+.home-page #contenu > #profil.portox-about {
+  padding: clamp(80px, 9vw, 140px) clamp(24px, 5vw, 80px);
+  color: #f5f7fb;
+  background: #000;
+  scroll-margin-top: 16px;
+}
+
+.portox-about-inner {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.45fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(40px, 6vw, 110px);
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.portox-about-label {
+  padding-top: 10px;
+}
+
+.portox-about-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #b8c5d8;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.portox-about-status > span {
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #438eff;
+  box-shadow: 0 0 14px #1765ed66;
+}
+
+.portox-about-label h2 {
+  max-width: 24ch;
+  margin: 16px 0 0;
+  color: #8694a8;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.portox-about-content {
+  min-width: 0;
+}
+
+.portox-about-text {
+  margin: 0;
+  color: #f5f7fb;
+  font-family: var(--body);
+  font-size: clamp(24px, 2.55vw, 38px);
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.045em;
+}
+
+.portox-about-text.is-enhanced .portox-about-word {
+  color: #7d899b;
+  transition: color 180ms ease;
+}
+
+.portox-about-text.is-enhanced .portox-about-word.is-read {
+  color: #f5f7fb;
+}
+
+.portox-about-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 32px;
+  margin-top: 38px;
+}
+
+.portox-about-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.portox-about-primary {
+  color: #edf4ff;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}
+
+.portox-about-primary > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #548bd6;
+  border-radius: 50%;
+  color: #83beff;
+  font-size: 14px;
+}
+
+.portox-about-secondary {
+  color: #a3b3ca;
+  text-decoration: none;
+}
+
+.portox-about-links a:hover {
+  color: #83beff;
+}
+
+.portox-about-links a:focus-visible {
+  outline: 2px solid #83beff;
+  outline-offset: 6px;
+  border-radius: 3px;
+}
+
+@media (max-width: 800px) {
+  .home-page #contenu > #profil.portox-about {
+    padding: 72px 24px;
+  }
+
+  .portox-about-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .portox-about-label {
+    padding-top: 0;
+  }
+
+  .portox-about-label h2 {
+    max-width: none;
+    margin-top: 8px;
+  }
+
+  .portox-about-text {
+    font-size: clamp(24px, 4.5vw, 32px);
+    line-height: 1.5;
+  }
+
+  .portox-about-links {
+    margin-top: 28px;
+  }
+}
+
+html[data-motion="reduced"]
+.portox-about-text.is-enhanced .portox-about-word {
+  color: #f5f7fb;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portox-about-text.is-enhanced .portox-about-word {
+    color: #f5f7fb;
+    transition: none;
+  }
+}
+
+@media print {
+  .home-page #contenu > #profil.portox-about {
+    padding: 24px;
+    color: #000;
+    background: #fff;
+  }
+
+  .portox-about-inner {
+    display: block;
+  }
+
+  .portox-about-text,
+  .portox-about-text.is-enhanced .portox-about-word,
+  .portox-about-text.is-enhanced .portox-about-word.is-read,
+  .portox-about-label h2,
+  .portox-about-status,
+  .portox-about-links a {
+    color: #000;
+  }
+}
